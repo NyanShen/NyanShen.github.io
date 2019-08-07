@@ -126,11 +126,11 @@
                         
                         
                         <li>
-                            <a href="/tags/jest/">jest</a>
+                            <a href="/tags/react/">react</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/react/">react</a>
+                            <a href="/tags/jest/">jest</a>
                         </li>
                         
                         <li>
@@ -184,9 +184,9 @@
             <span class="label label-gal">
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/jest/">jest</a>, 
-                
                 <a href="/tags/react/">react</a>, 
+                
+                <a href="/tags/jest/">jest</a>, 
                 
                 <a href="/tags/enzyme/">enzyme</a>, 
                 
@@ -215,9 +215,9 @@
                 
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/jest/">jest</a>, 
-                
                 <a href="/tags/react/">react</a>, 
+                
+                <a href="/tags/jest/">jest</a>, 
                 
                 <a href="/tags/enzyme/">enzyme</a>, 
                 
@@ -229,7 +229,12 @@
         </center>
     </div>
     <div class="content-article">
-        <h2 id="1-wepack-basic-config"><a href="#1-wepack-basic-config" class="headerlink" title="1. wepack basic config"></a>1. wepack basic config</h2>
+        <h2 id="1-Add-a-basic-TypeScript-configuration-file"><a href="#1-Add-a-basic-TypeScript-configuration-file" class="headerlink" title="1. Add a basic TypeScript configuration file"></a>1. Add a basic TypeScript configuration file</h2><p><a href="http://www.typescriptlang.org/docs/handbook/tsconfig-json.html" target="_blank" rel="noopener">tsconfig.json</a><br>You’ll want to bring your TypeScript files together - both the code you’ll be writing as well as any necessary declaration files.</p>
+<p>To do this, you’ll need to create a <code>tsconfig.json</code> which contains a list of your input files as well as all your compilation settings. Simply create a new file in your project root named <code>tsconfig.json</code> and fill it with the following contents:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// tsconfig.json</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">        <span class="attr">"outDir"</span>: <span class="string">"./dist/"</span>,</span><br><span class="line">        <span class="attr">"target"</span>: <span class="string">"es5"</span>,</span><br><span class="line">        "module": "commonJs", // 组织代码方式</span><br><span class="line">        "sourceMap": true,</span><br><span class="line">        "allowJs": true,</span><br><span class="line">        "jsx": "react",</span><br><span class="line">        "removeComments": true, // 编译 js 的时候，删除掉注释</span><br><span class="line">        "typeRoots": [], // 默认所有可见的"@types"包会在编译过程中被包含进来</span><br><span class="line">        "types": ["node", "lodash"], // 只有被列出来的包才会被包含进来</span><br><span class="line">    </span><br><span class="line">    &#125;,</span><br><span class="line">    "exclude": [ // 不需要编译</span><br><span class="line">        "node_modules",</span><br><span class="line">        "dist",</span><br><span class="line">        "webpack",</span><br><span class="line">        "jest",</span><br><span class="line">        "enzyme",</span><br><span class="line">        "**/*.test.ts",</span><br><span class="line">        <span class="string">"**/*.test.tsx"</span></span><br><span class="line">    ],</span><br><span class="line">    "include": [</span><br><span class="line">        <span class="string">"./src/**/*"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>tsconfig module click <a href="http://json.schemastore.org/tsconfig" target="_blank" rel="noopener">here</a></p>
+<h2 id="2-webpack-basic-config"><a href="#2-webpack-basic-config" class="headerlink" title="2. webpack basic config"></a>2. webpack basic config</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: <span class="string">"./src/index.tsx"</span>,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [<span class="string">".ts"</span>, <span class="string">".tsx"</span>, <span class="string">".js"</span>, <span class="string">".json"</span>],</span><br><span class="line">        alias: &#123;</span><br><span class="line">            components: Path2D.resolve(__dirname, <span class="string">"src/components/"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/.\tsx?$/</span>,</span><br><span class="line">                exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">                loader: <span class="string">"awesome-typescript-loader"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">                enforce: <span class="string">"pre"</span>,</span><br><span class="line">                loader: <span class="string">"source-map-loader"</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">      <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      template: <span class="string">'./src/index.html'</span></span><br><span class="line">     &#125;)</span><br><span class="line">    ],</span><br><span class="line">    externals: &#123;</span><br><span class="line">        react: <span class="string">"React"</span>,</span><br><span class="line">        reactDom: <span class="string">"ReactDom"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 </article>
 
@@ -303,31 +308,31 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/06/jest-异步代码测试方法/">jest-异步代码测试方法</a>
+                    <a href="/2019/08/04/jest test todo list/">jest test todo list</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/06/js-variables/">Javasript Variables</a>
+                    <a href="/2019/08/03/Jest Setup and Teardown/">Jest Setup and Teardown</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/06/Jest Setup and Teardown/">Jest Setup and Teardown</a>
+                    <a href="/2019/08/02/jest-异步代码测试方法/">jest-异步代码测试方法</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/06/es6-新特性/">es6 新特性</a>
+                    <a href="/2019/08/01/es6-新特性/">es6 新特性</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/06/jest test todo list/">jest test todo list</a>
+                    <a href="/2019/08/01/js-variables/">Javasript Variables</a>
                 </span>
             </li>
             
@@ -349,19 +354,25 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/06/Jest Setup and Teardown/">Jest Setup and Teardown</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/08/06/jest-异步代码测试方法/">jest-异步代码测试方法</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2019/08/06/react typescript jest config (一)/">react typescript jest config (一)</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/03/Jest Setup and Teardown/">Jest Setup and Teardown</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/02/jest-异步代码测试方法/">jest-异步代码测试方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/01/js-variables/">Javasript Variables</a>
                 </span>
             </li>
             
@@ -373,19 +384,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/06/js-variables/">Javasript Variables</a>
+                    <a href="/2019/08/01/es6-新特性/">es6 新特性</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/06/es6-新特性/">es6 新特性</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/08/06/jest test todo list/">jest test todo list</a>
+                    <a href="/2019/08/04/jest test todo list/">jest test todo list</a>
                 </span>
             </li>
             
@@ -418,15 +423,15 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/jest/" style="font-size: 17.604718364400732px;" class="tag-cloud-link">jest</a>
+    <a href="/tags/react/" style="font-size: 15.980486277791915px;" class="tag-cloud-link">react</a>
     
-    <a href="/tags/react/" style="font-size: 15.987414856041234px;" class="tag-cloud-link">react</a>
+    <a href="/tags/jest/" style="font-size: 8.3656713747223px;" class="tag-cloud-link">jest</a>
     
-    <a href="/tags/enzyme/" style="font-size: 17.754719168500483px;" class="tag-cloud-link">enzyme</a>
+    <a href="/tags/enzyme/" style="font-size: 15.362634798080604px;" class="tag-cloud-link">enzyme</a>
     
-    <a href="/tags/typescript/" style="font-size: 16.08291121925695px;" class="tag-cloud-link">typescript</a>
+    <a href="/tags/typescript/" style="font-size: 9.325594143700311px;" class="tag-cloud-link">typescript</a>
     
-    <a href="/tags/javascript/" style="font-size: 18.510727275814435px;" class="tag-cloud-link">javascript</a>
+    <a href="/tags/javascript/" style="font-size: 15.825226919258782px;" class="tag-cloud-link">javascript</a>
     
 </div>
                 
