@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Nyan Shen">
+    
+    <meta name="description" content="hard work will payoff">
+    
+    
+    
+    
+    
+    
+    <title>es6 新特性 | sym blog</title>
+    <link href="”https://nyanshen.github.io“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/https:/avatars3.githubusercontent.com/u/25915814?s=400&u=ba4588d90273b5665763d5272218d066548f3121&v=4'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target=".bs-navbar-collapse"
+                    aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://nyanshen.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">sym blog</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>home
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>archive
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/categories">
+                        <i class="fa fa-list"></i>categories
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>tags
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/jest/">jest</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/javascript/">javascript</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/react/">react</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/tags">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/about">
+                        <i class="fa fa-user"></i>about me
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://nyanshen.github.io">sym blog</a>
+        >
+        <span>es6 新特性</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2019/08/06/es6-新特性/">es6 新特性</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/javascript/">javascript</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2019-08-06
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2019/08/06/es6-新特性/">es6 新特性</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2019-08-06
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/javascript/">javascript</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h2 id="1-类（class）"><a href="#1-类（class）" class="headerlink" title="1. 类（class）"></a>1. 类（class）</h2><p>这三个特性涉及了ES5中最令人头疼的的几个部分：原型、构造函数，继承…ES6提供了更接近传统语言的写法，引入了Class（类）这个概念。新的class写法让对象原型的写法更加清晰、更像面向对象编程的语法，也更加通俗易懂。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name, color) &#123;  <span class="comment">// 构造函数</span></span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.color = color;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  toString() &#123; <span class="comment">// toString方法</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`name: <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>, color: <span class="subst">$&#123;<span class="keyword">this</span>.color&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getName() &#123;  <span class="comment">// 取值</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">  &#125;</span><br><span class="line">  setName(value) &#123; <span class="comment">// 存值</span></span><br><span class="line">    <span class="keyword">this</span>.name = value;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getColor() &#123;  <span class="comment">// 取值</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.color;</span><br><span class="line">  &#125;</span><br><span class="line">  setColor(value) &#123; <span class="comment">// 存值</span></span><br><span class="line">    <span class="keyword">this</span>.color = value;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> animal = <span class="keyword">new</span> Animal(<span class="string">"cat"</span>, <span class="string">"white"</span>);</span><br><span class="line">animal.toString(); <span class="comment">// name: cat, color: white</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(animal.hasOwnProperty(<span class="string">'name'</span>)) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(animal.hasOwnProperty(<span class="string">'toString'</span>)) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(animal.__proto__.hasOwnProperty(<span class="string">'toString'</span>)) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-super-和-extends"><a href="#2-super-和-extends" class="headerlink" title="2. super 和 extends"></a>2. super 和 extends</h2><h4 id="使用新的super和extends关键字扩展类"><a href="#使用新的super和extends关键字扩展类" class="headerlink" title="使用新的super和extends关键字扩展类"></a>使用新的super和extends关键字扩展类</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(action = "catch thing",name, color) &#123;</span><br><span class="line">    <span class="keyword">super</span>(<span class="string">"cat"</span>, <span class="string">"black"</span>); <span class="comment">// super用作函数, 必须在this使用前调用</span></span><br><span class="line">    <span class="keyword">this</span>.action = action; <span class="comment">// Cat 类本身属性</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  toString() &#123;</span><br><span class="line">    <span class="keyword">super</span>.toString();<span class="comment">// super用作对象</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getAction() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.action;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  setAction(value) &#123;</span><br><span class="line">      <span class="keyword">this</span>.action = value;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> cat = <span class="keyword">new</span> Cat(<span class="string">"eat fish"</span>);</span><br><span class="line">cat.toString(); <span class="comment">// name: cat, color: white</span></span><br><span class="line"><span class="built_in">console</span>.log(cat instanceOf Cat) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(cat instanceOf Animal) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="使用ES5编写同样功能的类"><a href="#使用ES5编写同样功能的类" class="headerlink" title="使用ES5编写同样功能的类"></a>使用ES5编写同样功能的类</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name, color</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name || <span class="string">"cat"</span>;</span><br><span class="line">  <span class="keyword">this</span>.color = color || <span class="string">"orange"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Animal.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`name: <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>, color: <span class="subst">$&#123;<span class="keyword">this</span>.color&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span> (<span class="params">action, name, color</span>) </span>&#123;</span><br><span class="line">  Animal.call(<span class="keyword">this</span>, name, color);</span><br><span class="line">  <span class="keyword">this</span>.action = action || <span class="string">"catch thing"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Cat.prototype = <span class="built_in">Object</span>.create(Animal.prototype);</span><br><span class="line">Cat.prototype.constructor = Cat;</span><br><span class="line"></span><br><span class="line">Cat.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  Tree.prototype.toString.call(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Cat.prototype.setAction = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.action = value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-模块化（Module）"><a href="#3-模块化（Module）" class="headerlink" title="3. 模块化（Module）"></a>3. 模块化（Module）</h2><p>es5不支持原生的模块化，在es6模块作为重要的组成部分被添加进来。模块的共能主要由export和import组成。每一个模块都有自己的单独的作用域，模块之间的调用是通过export来规定模块对外暴露的接口，通过import来引用其他模块提供的接口。同时模块还创造了命名空间，防止函数的命名冲突。</p>
+<h4 id="导出（export）"><a href="#导出（export）" class="headerlink" title="导出（export）"></a>导出（export）</h4><p>ES6允许在一个模块中使用export来导出多个变量和函数。</p>
+<h5 id="导出变量"><a href="#导出变量" class="headerlink" title="导出变量"></a>导出变量</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> varible = <span class="string">"test variable exprot"</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> varible;</span><br><span class="line"><span class="keyword">let</span> name = <span class="string">"cat"</span>;</span><br><span class="line"><span class="keyword">let</span> color = <span class="string">"yellow"</span>;</span><br><span class="line"><span class="keyword">export</span> &#123;name, color&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="导出常量"><a href="#导出常量" class="headerlink" title="导出常量"></a>导出常量</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> NUMBER_LENGTH = <span class="number">20</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="导出函数"><a href="#导出函数" class="headerlink" title="导出函数"></a>导出函数</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">myModuleFn</span>(<span class="params">somParams</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> somParams</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="导入（import）"><a href="#导入（import）" class="headerlink" title="导入（import）"></a>导入（import）</h4><p>定义好模块的输出，就可以在另一个模块通过import导入</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> varible <span class="keyword">from</span> <span class="string">"test.js"</span></span><br><span class="line"><span class="keyword">import</span> &#123;myModuleFn&#125; <span class="keyword">from</span> <span class="string">"myModuleFn"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;name, color&#125; <span class="keyword">from</span> <span class="string">"./path/to/test.js"</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-箭头函数（Arrow-Function）"><a href="#4-箭头函数（Arrow-Function）" class="headerlink" title="4. 箭头函数（Arrow Function）"></a>4. 箭头函数（Arrow Function）</h2><p><code>=&gt;</code>不只是<code>function</code>的简写，它还带来了其他好处。箭头函数与包围它的代码共享同一个this，能够帮你解决this的指向问题。有经验的javaScript开发者都熟悉<code>var self = this或var that = this</code>这种引用外围的this的模式。但<code>=&gt;</code>就不需要这种模式了。</p>
+<p>不论是箭头函数还是bind，每次被执行都返回的是一个新的函数引用，因此如果你还需要函数的引用去做别的一些事（如卸载监听器），那么你必须保存这个引用。</p>
+<h4 id="箭头函数与普通函数的区别"><a href="#箭头函数与普通函数的区别" class="headerlink" title="箭头函数与普通函数的区别"></a>箭头函数与普通函数的区别</h4><ul>
+<li>箭头函数是匿名函数，不能作为构造函数，不能使用new</li>
+<li>箭头函数不绑定arguments，取而代之用rest参数…解决</li>
+<li>箭头函数不绑定this，会捕获其所在的上下文的this值，作为自己的this值</li>
+<li>箭头函数通过 call()  或   apply() 方法调用一个函数时，只传入了一个参数，对 this 并没有影响。</li>
+<li>箭头函数没有原型属性</li>
+<li>箭头函数不能当做Generator函数,不能使用yield关键字</li>
+<li>箭头函数的 this 永远指向其上下文的  this ，任何方法都改变不了其指向，如 call() ,  bind() ,  apply()<br>普通函数的this指向调用它的那个对象</li>
+</ul>
+<h2 id="5-模板字符串"><a href="#5-模板字符串" class="headerlink" title="5.  模板字符串"></a>5.  模板字符串</h2><p>ES6支持模板字符串，使得字符串的拼接更加简洁、直观。</p>
+<ul>
+<li><p>不使用模板字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var name = &apos;your name is &apos; + first + &apos; &apos; + last;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用模板字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var name = `your name is $&#123;first&#125;  $&#123;last&#125;`;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>在ES6中通过<code>${}</code>就可以完成字符串拼接，只需要将变量放在大括号中。</p>
+<h2 id="7-解构赋值"><a href="#7-解构赋值" class="headerlink" title="7. 解构赋值"></a>7. 解构赋值</h2><p>解构赋值语法是Javascript的一种表达式，可以方便的从数组或对象中快速提取值赋给定义的变量。</p>
+<h4 id="获取数组的值"><a href="#获取数组的值" class="headerlink" title="获取数组的值"></a>获取数组的值</h4><p>从数据中获取值并赋值到的变量中，变量的顺序与数组中对象顺序对应</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = [&#123;<span class="string">"a"</span>: <span class="string">"one"</span>&#125;, <span class="string">"two"</span>, <span class="string">"three"</span>, <span class="string">"four"</span>];</span><br><span class="line"><span class="keyword">var</span> [one,  two, three] = foo;</span><br><span class="line"><span class="built_in">console</span>.log(one, two, three)</span><br><span class="line"><span class="comment">// 如果你要忽略某些值， 你可以按照下面的写法获取你想要的值</span></span><br><span class="line"><span class="keyword">var</span> [first, , , last] = foo;</span><br><span class="line"><span class="built_in">console</span>.log(first, last)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> [a, b] = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line"><span class="built_in">console</span>.log(a, b)</span><br></pre></td></tr></table></figure>
+
+<p>如果没有从数组中获取到值，可以为变量设置一个默认值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a ,b;</span><br><span class="line">[a= <span class="number">3</span>, b=<span class="number">7</span>]=[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取对象的值"><a href="#获取对象的值" class="headerlink" title="获取对象的值"></a>获取对象的值</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> student = &#123;</span><br><span class="line">  name: <span class="string">"Nyan"</span>,</span><br><span class="line">  age: <span class="number">27</span>,</span><br><span class="line">  city: <span class="string">"ShenZhen"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> &#123;name, age, city&#125; = student;</span><br><span class="line"><span class="built_in">console</span>.log(name, age, city)</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-延展操作符（Spread-operator）"><a href="#8-延展操作符（Spread-operator）" class="headerlink" title="8. 延展操作符（Spread operator）"></a>8. 延展操作符（Spread operator）</h2><p><code>延展操作符...</code>可以在函数调用/数组构造时，将数组表达式或者string在语法层面展开；还可以在构造对象时，将对象表达式按key-value方式展开。</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><ul>
+<li><p>函数调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myFunction(...iterableObj)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组构造或字符串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[...iterableObj, <span class="string">'4'</span>, ...<span class="string">'hello'</span>, <span class="number">6</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构造对象时，进行克隆或属性拷贝（ES2018）新增特性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> objClone = &#123;...obj&#125;;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><ul>
+<li><p>在函数调用时使用延展操作符</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params">x, y, z</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y + z;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> numbers= [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(sum.apply(<span class="literal">null</span>, numbers))</span><br><span class="line"><span class="built_in">console</span>.log(sum(...numbers))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构造数组<br>没有延展操作符的时候，只能通过使用push, splice, concat等方法，来将已有的数组元素变成新数组的一部分。有了延展操作符，构造数组更加简单，优雅。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> students = [<span class="string">"Jack"</span>, <span class="string">"Tom"</span>];</span><br><span class="line"><span class="keyword">const</span> persons = [<span class="string">"Jony"</span>, ...students, <span class="string">"Kin"</span>, <span class="string">"Anny"</span>]</span><br><span class="line"><span class="built_in">console</span>.log(persons)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>和参数列表的展开类似，<code>...</code>在构造数组时，可以任意位置多次使用。</p>
+<ul>
+<li>数组拷贝<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">var</span> arr2 = [...arr]</span><br><span class="line">arr2.push(<span class="number">5</span>)</span><br><span class="line"><span class="built_in">console</span>.log(arr2)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>展开语法，与object.assign()行为一致，执行的是都是浅拷贝（只遍历一层）</p>
+<ul>
+<li>连接多个数组<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr3 = [...arr1, ...arr3]</span><br><span class="line"><span class="comment">// 等同与</span></span><br><span class="line"><span class="keyword">var</span> arr4 = arr1.concat(arr2)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="在ES2018中延展操作符增加了对对象的支持"><a href="#在ES2018中延展操作符增加了对对象的支持" class="headerlink" title="在ES2018中延展操作符增加了对对象的支持"></a>在ES2018中延展操作符增加了对对象的支持</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">foo</span>: <span class="string">"baz"</span>, <span class="attr">x</span>: <span class="number">12</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;<span class="attr">foo</span>: <span class="string">"bar"</span>, <span class="attr">y</span>: <span class="number">34</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> cloneObj = &#123;...obj1&#125;;</span><br><span class="line"><span class="keyword">var</span> mergeObj = &#123;...obj, ...obj2&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(obj1, obj2)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>在React中使用<br>通常我们在封装一个组件时，会对外公开一些props用于实现功能。大部分情况下在外部使用都应显示传递的props.但是当传递大量的props时，会非常繁琐，这时我们可以使用<code>...延展操作符，用于取出参数对象的所有可遍历属性</code>，来进行传递</p>
+</li>
+<li><p>一般情况下，我们这样传递</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;CustomComponent name=<span class="string">"Nyan"</span> age=&#123;<span class="number">27</span>&#125; /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用…，等同于上面的写法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> params = &#123;</span><br><span class="line">  name: <span class="string">"name"</span>,</span><br><span class="line">  age: <span class="number">27</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;CustomComponent &#123;...params&#125; /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配合解构赋值避免传入一些不需要的参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> params = &#123;</span><br><span class="line">  name: <span class="string">"name"</span>,</span><br><span class="line">  age: <span class="number">27</span>,</span><br><span class="line">  type: <span class="string">"type Name"</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> &#123;type, ...other&#125; = params;</span><br><span class="line">&lt;CustomComponent &#123;...other&#125; /&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="9-对象属性的简写"><a href="#9-对象属性的简写" class="headerlink" title="9. 对象属性的简写"></a>9. 对象属性的简写</h2><p>在ES6中允许我们在设置一个对象的属性的时候不指定属性名</p>
+<ul>
+<li>不使用es6<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name= <span class="string">"name"</span>, age = <span class="number">27</span></span><br><span class="line"><span class="keyword">const</span> student = &#123;<span class="attr">name</span>: name,<span class="attr">age</span>: age, <span class="attr">getName</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>对象必须包含属性和值，显得非常冗余</p>
+<ul>
+<li>使用Es6<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name= <span class="string">"name"</span>, age = <span class="number">27</span></span><br><span class="line"><span class="keyword">const</span> student = &#123;name,age, <span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>)</span>&#123;&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="10-Promise"><a href="#10-Promise" class="headerlink" title="10. Promise"></a>10. Promise</h2><p>Promise是异步编程的一种解决方案，比传统的解决方案callback更加优雅。它最早由社区提出与实现，ES6将其写进了语言标准，统一了写法，原生提供了Promise对象。</p>
+<ul>
+<li><p>不使用ES6</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"promise test"</span>)</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"promise test 1"</span>)</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;, <span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用ES6</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> waitSecond = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">  setTimeout(resolve, <span class="number">1000</span>)</span><br><span class="line">&#125;);</span><br><span class="line">waitSeccond</span><br><span class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"promise test"</span>)</span><br><span class="line">  <span class="keyword">return</span> waitSecond</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"promise test 1"</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get"
+              action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            Nyan Shen
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="https://avatars3.githubusercontent.com/u/25915814?s=400&u=ba4588d90273b5665763d5272218d066548f3121&v=4" width="140" height="140"
+                 alt="个人头像" class="author-image">
+            <p class="author-description"><p>hard work will payoff</p>
+</p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/react typescript jest config/">react typescript jest config (一)</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/js-variables/">Javasript Variables</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/jest-异步代码测试方法/">jest-异步代码测试方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/Jest Setup and Teardown/">Jest Setup and Teardown</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/es6-新特性/">es6 新特性</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/jest test todo list/">jest test todo list</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/Jest Setup and Teardown/">Jest Setup and Teardown</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/js-variables/">Javasript Variables</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/react typescript jest config/">react typescript jest config (一)</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/jest-异步代码测试方法/">jest-异步代码测试方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/es6-新特性/">es6 新特性</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/jest test todo list/">jest test todo list</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2019/08/06/es6-新特性/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/08/06/es6-新特性/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/08/06/es6-新特性/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/jest/" style="font-size: 13.709763717338065px;" class="tag-cloud-link">jest</a>
+    
+    <a href="/tags/javascript/" style="font-size: 11.88288612269298px;" class="tag-cloud-link">javascript</a>
+    
+    <a href="/tags/react/" style="font-size: 14.477933444155024px;" class="tag-cloud-link">react</a>
+    
+    <a href="/tags/enzyme/" style="font-size: 9.389526072319267px;" class="tag-cloud-link">enzyme</a>
+    
+    <a href="/tags/typescript/" style="font-size: 10.743629690907873px;" class="tag-cloud-link">typescript</a>
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="http://kdays.net/days/" target="_blank">KDays Forum</a>
+    </li>
+    
+    <li>
+        <a href="http://www.gal123.com/" target="_blank">绅士导航♂</a>
+    </li>
+    
+    <li>
+        <a href="http://www.moe123.com/" target="_blank">萌导航</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/NyanShen/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://juejin.im/timeline" target="_blank">掘金</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com/people/nyanshen/activities" target="_blank">知乎</a>
+    </li>
+    
+    <li>
+        <a href="https://www.cnblogs.com/Nyan-Workflow-FC/" target="_blank">博客园</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 Nyan Shen Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+
+</html>

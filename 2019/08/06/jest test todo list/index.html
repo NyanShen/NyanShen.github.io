@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Nyan Shen">
+    
+    <meta name="description" content="hard work will payoff">
+    
+    
+    
+    
+    
+    
+    <title>jest test todo list | sym blog</title>
+    <link href="”https://nyanshen.github.io“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/https:/avatars3.githubusercontent.com/u/25915814?s=400&u=ba4588d90273b5665763d5272218d066548f3121&v=4'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target=".bs-navbar-collapse"
+                    aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://nyanshen.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">sym blog</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>home
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>archive
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/categories">
+                        <i class="fa fa-list"></i>categories
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>tags
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/jest/">jest</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/javascript/">javascript</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/react/">react</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/tags">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/about">
+                        <i class="fa fa-user"></i>about me
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://nyanshen.github.io">sym blog</a>
+        >
+        <span>jest test todo list</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2019/08/06/jest test todo list/">jest test todo list</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/jest/">jest</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2019-08-06
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2019/08/06/jest test todo list/">jest test todo list</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2019-08-06
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/jest/">jest</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h2 id="1-Header组件单元测试"><a href="#1-Header组件单元测试" class="headerlink" title="1. Header组件单元测试"></a>1. Header组件单元测试</h2><p>header组件主要由一个title,和一个输入框组成，输入框有以下几个处理情况：</p>
+<ul>
+<li>输入框初始化为空</li>
+<li>输入框内容为空时，回车事件不做任何操作</li>
+<li>输入框内容不为空时，回车事件会调用添加todo的函数，并且清空输入框内容</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Header.jsx</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Header</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            value: <span class="string">""</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.handleKeyUp = <span class="keyword">this</span>.handleKeyUp.bind(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">this</span>.handleInputChange = <span class="keyword">this</span>.handleInputChange.bind(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    handleKeyUp(e) &#123;</span><br><span class="line">        <span class="keyword">const</span> &#123; value &#125; = <span class="keyword">this</span>.state;</span><br><span class="line">        <span class="keyword">if</span> (e.keyCode === <span class="number">13</span> &amp;&amp; value) &#123;</span><br><span class="line">            <span class="keyword">this</span>.props.addUndoItem(value)</span><br><span class="line">            <span class="keyword">this</span>.setState(&#123;<span class="attr">value</span>: <span class="string">""</span>&#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    handleInputChange(e) &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            value: e.target.value</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">const</span> &#123; value &#125; = <span class="keyword">this</span>.state;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div className=<span class="string">"header"</span>&gt;</span><br><span class="line">                &lt;div className=<span class="string">"header-content"</span>&gt;TodoList</span><br><span class="line">                &lt;input</span><br><span class="line">                    value=&#123;value&#125;</span><br><span class="line">                    data-test=<span class="string">"input"</span></span><br><span class="line">                    className=<span class="string">"header-input"</span></span><br><span class="line">                    placeholder=<span class="string">"add todo"</span></span><br><span class="line">                    onKeyUp=&#123;<span class="keyword">this</span>.handleKeyUp&#125;</span><br><span class="line">                    onChange=&#123;<span class="keyword">this</span>.handleInputChange&#125;</span><br><span class="line">                /&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// test/Header.test.jsx</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; shallow &#125; <span class="keyword">from</span> <span class="string">"enzyme"</span>;</span><br><span class="line"><span class="keyword">import</span> Header <span class="keyword">from</span> <span class="string">"../Header"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; findTestWrapper &#125; <span class="keyword">from</span> <span class="string">"common/util/testUtils"</span></span><br><span class="line"></span><br><span class="line">describe(<span class="string">"Header Componet Test"</span>, () =&gt; &#123;</span><br><span class="line">    it(<span class="string">"样式渲染正常"</span>, () =&gt; &#123;</span><br><span class="line">        <span class="keyword">const</span> wrapper = shallow(<span class="xml"><span class="tag">&lt;<span class="name">Header</span> /&gt;</span>);</span></span><br><span class="line"><span class="xml">        expect(wrapper).toMatchSnapshot();</span></span><br><span class="line"><span class="xml">    &#125;)</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">    it("组件包含输入框", () =&gt; &#123;</span></span><br><span class="line"><span class="xml">        const wrapper = shallow(<span class="tag">&lt;<span class="name">Header</span> /&gt;</span>);</span></span><br><span class="line"><span class="xml">        const inputElem = findTestWrapper(wrapper, "input");</span></span><br><span class="line"><span class="xml">        expect(inputElem.length).toBe(1);</span></span><br><span class="line"><span class="xml">    &#125;)</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">    it("输入框内容初始化应该为空", () =&gt; &#123;</span></span><br><span class="line"><span class="xml">        const wrapper = shallow(<span class="tag">&lt;<span class="name">Header</span> /&gt;</span>);</span></span><br><span class="line"><span class="xml">        const inputElem = wrapper.find("[data-test='input']");</span></span><br><span class="line"><span class="xml">        expect(inputElem.prop("value")).toEqual("");</span></span><br><span class="line"><span class="xml">    &#125;)</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">    it("输入框随用户输入时发生改变", () =&gt; &#123;</span></span><br><span class="line"><span class="xml">        const wrapper = shallow(<span class="tag">&lt;<span class="name">Header</span> /&gt;</span>);</span></span><br><span class="line"><span class="xml">        const inputElem = wrapper.find("[data-test='input']");</span></span><br><span class="line"><span class="xml">        /**</span></span><br><span class="line"><span class="xml">         * 模拟change事件，输入test nyan</span></span><br><span class="line"><span class="xml">         */</span></span><br><span class="line"><span class="xml">        inputElem.simulate("change", &#123;</span></span><br><span class="line"><span class="xml">            target: &#123;</span></span><br><span class="line"><span class="xml">                value: "test nyan"</span></span><br><span class="line"><span class="xml">            &#125;</span></span><br><span class="line"><span class="xml">        &#125;)</span></span><br><span class="line"><span class="xml">        expect(wrapper.state("value")).toEqual("test nyan");</span></span><br><span class="line"><span class="xml">    &#125;)</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">    it("输入框没有内容时，回车时无反应", () =&gt; &#123;</span></span><br><span class="line"><span class="xml">        const fn = jest.fn();</span></span><br><span class="line">        const wrapper = shallow(&lt;Header addUndoItem=&#123;fn&#125; /&gt;);</span><br><span class="line">        const inputElem = wrapper.find("[data-test='input']");</span><br><span class="line">        wrapper.setState(&#123; value: "" &#125;)</span><br><span class="line">        inputElem.simulate("kepUp", &#123;</span><br><span class="line">            keyCode: 13</span><br><span class="line">        &#125;)</span><br><span class="line">        expect(fn).not.toHaveBeenCalled();</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    it("输入框有内容触发回车时，函数应该被调用", () =&gt; &#123;</span><br><span class="line">        const fn = jest.fn();</span><br><span class="line">        const wrapper = shallow(&lt;Header addUndoItem=&#123;fn&#125; /&gt;);</span><br><span class="line">        const inputElem = wrapper.find("[data-test='input']");</span><br><span class="line">        // 准备数据</span><br><span class="line">        wrapper.setState(&#123; value: "jest react" &#125;)</span><br><span class="line">        /**</span><br><span class="line">         * 设置keyUp的keyCode模拟回车</span><br><span class="line">         */</span><br><span class="line">        inputElem.simulate("keyUp", &#123;</span><br><span class="line">            keyCode: 13</span><br><span class="line">        &#125;)</span><br><span class="line">        expect(fn).toHaveBeenCalled();</span><br><span class="line">        expect(fn).toHaveBeenLastCalledWith("jest react"); // 最后的参数</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    it("输入框有内容触发回车时，内容应该被清除", () =&gt; &#123;</span><br><span class="line">        const fn = jest.fn();</span><br><span class="line">        const wrapper = shallow(&lt;Header addUndoItem=&#123;fn&#125; /&gt;);</span><br><span class="line">        const inputElem = wrapper.find("[data-test='input']");</span><br><span class="line">        // 准备数据</span><br><span class="line">        wrapper.setState(&#123; value: "jest react add one" &#125;)</span><br><span class="line">        /**</span><br><span class="line">         * 设置keyUp的keyCode模拟回车</span><br><span class="line">         */</span><br><span class="line">        inputElem.simulate("keyUp", &#123;</span><br><span class="line">            keyCode: 13</span><br><span class="line">        &#125;)</span><br><span class="line">        const newInputElem = wrapper.find("[data-test='input']");</span><br><span class="line">        expect(newInputElem.prop("value")).toBe("");</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-TodoList组件单元测试"><a href="#2-TodoList组件单元测试" class="headerlink" title="2. TodoList组件单元测试"></a>2. TodoList组件单元测试</h2><p>TodoList组件主要控制undoList数据状态的改变，实现改变数据项显示状态（输入框或文字）。</p>
+<ul>
+<li>首先数据项undoList初始化为空</li>
+<li>其次判断TodoList组件所包含那些子组件以及属性方法</li>
+<li>每一个数据项都有修改和删除操作</li>
+<li>通过状态的改变进行数据项修改</li>
+<li>点击每一个数据项，会调用状态改变函数</li>
+<li>当输入框失去焦点时，改变数据项的状态</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> Header <span class="keyword">from</span> <span class="string">"../components/Header"</span></span><br><span class="line"><span class="keyword">import</span> UndoList <span class="keyword">from</span> <span class="string">"../components/UndoList"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">TodoList</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            undoList: []</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.deleteItem = <span class="keyword">this</span>.deleteItem.bind(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">this</span>.addUndoItem = <span class="keyword">this</span>.addUndoItem.bind(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">this</span>.changeStatus = <span class="keyword">this</span>.changeStatus.bind(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">this</span>.handleBlur = <span class="keyword">this</span>.handleBlur.bind(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">this</span>.handleValueChange = <span class="keyword">this</span>.handleValueChange.bind(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    addUndoItem(value) &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            undoList: [...this.state.undoList, &#123;</span><br><span class="line">                status: <span class="string">"div"</span>,</span><br><span class="line">                value</span><br><span class="line">            &#125;]</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    deleteItem(index) &#123;</span><br><span class="line">        <span class="keyword">const</span> newUndoList = [...this.state.undoList]</span><br><span class="line">        newUndoList.splice(index, <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            undoList: newUndoList</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    changeStatus(index) &#123;</span><br><span class="line">        <span class="keyword">const</span> newUndoList = <span class="keyword">this</span>.state.undoList.map(<span class="function">(<span class="params">item, listIndex</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (listIndex === index) &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;</span><br><span class="line">                    ...item,</span><br><span class="line">                    status: <span class="string">"input"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                ...item,</span><br><span class="line">                status: <span class="string">"div"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            undoList: newUndoList</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    handleBlur(index) &#123;</span><br><span class="line">        <span class="keyword">const</span> newUndoList = <span class="keyword">this</span>.state.undoList.map(<span class="function">(<span class="params">item, listIndex</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (listIndex === index) &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;</span><br><span class="line">                    ...item,</span><br><span class="line">                    status: <span class="string">"div"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> item</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            undoList: newUndoList</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    handleValueChange(index, value) &#123;</span><br><span class="line">        <span class="keyword">const</span> newUndoList = <span class="keyword">this</span>.state.undoList.map(<span class="function">(<span class="params">item, listIndex</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (listIndex === index) &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;</span><br><span class="line">                    ...item,</span><br><span class="line">                    value</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> item</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            undoList: newUndoList</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">const</span> &#123; undoList &#125; = <span class="keyword">this</span>.state;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;&gt;</span><br><span class="line">                &lt;Header addUndoItem=&#123;<span class="keyword">this</span>.addUndoItem&#125; /&gt;</span><br><span class="line">                &lt;UndoList</span><br><span class="line">                    list=&#123;undoList&#125;</span><br><span class="line">                    deleteItem=&#123;<span class="keyword">this</span>.deleteItem&#125;</span><br><span class="line">                    changeStatus=&#123;<span class="keyword">this</span>.changeStatus&#125;</span><br><span class="line">                    handleBlur=&#123;<span class="keyword">this</span>.handleBlur&#125;</span><br><span class="line">                    handleValueChange=&#123;<span class="keyword">this</span>.handleValueChange&#125;</span><br><span class="line">                /&gt;</span><br><span class="line">            &lt;<span class="regexp">/&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ todoList.test.js</span></span><br><span class="line"><span class="regexp">import React from "react";</span></span><br><span class="line"><span class="regexp">import &#123; shallow &#125; from "enzyme";</span></span><br><span class="line"><span class="regexp">import TodoList from "../</span>../../containers/TodoList<span class="string">";</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">describe("</span>TodoList Comonent Test<span class="string">", () =&gt; &#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    it("</span>初始化列表为空<span class="string">", () =&gt; &#123;</span></span><br><span class="line"><span class="string">        const wrapper = shallow(&lt;TodoList /&gt;);</span></span><br><span class="line"><span class="string">        expect(wrapper.state("</span>undoList<span class="string">")).toEqual([]);</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    it("</span>Header组件存在addUndoItem的属性<span class="string">", () =&gt; &#123;</span></span><br><span class="line"><span class="string">        const wrapper = shallow(&lt;TodoList /&gt;);</span></span><br><span class="line"><span class="string">        const header = wrapper.find("</span>Header<span class="string">");</span></span><br><span class="line"><span class="string">        //expect(header.prop("</span>addUndoItem<span class="string">")).toBe(wrapper.instance().addUndoItem);</span></span><br><span class="line"><span class="string">        expect(header.prop("</span>addUndoItem<span class="string">")).toBeTruthy();</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    it("</span>addUndoItem方法被调用时，undoList数据项新增<span class="string">", () =&gt; &#123;</span></span><br><span class="line"><span class="string">        const wrapper = shallow(&lt;TodoList /&gt;);</span></span><br><span class="line"><span class="string">        /**</span></span><br><span class="line"><span class="string">         * const header = wrapper.find("</span>Header<span class="string">");</span></span><br><span class="line"><span class="string">         * const addFn = header.prop("</span>addUndoItem<span class="string">");</span></span><br><span class="line"><span class="string">         * addFn("</span>add item one<span class="string">");</span></span><br><span class="line"><span class="string">         * 这样操作，测试就会跟Header组件耦合（像集成测试），应该修改为一下方案</span></span><br><span class="line"><span class="string">         */</span></span><br><span class="line"><span class="string">        const content = "</span>add item one<span class="string">"</span></span><br><span class="line"><span class="string">        wrapper.instance().addUndoItem(content)</span></span><br><span class="line"><span class="string">        expect(wrapper.state("</span>undoList<span class="string">").length).toBe(1);</span></span><br><span class="line"><span class="string">        expect(wrapper.state("</span>undoList<span class="string">")[0]).toEqual(&#123;</span></span><br><span class="line"><span class="string">            status: "</span>div<span class="string">",</span></span><br><span class="line"><span class="string">            value: content</span></span><br><span class="line"><span class="string">        &#125;)</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    it("</span>UndoList 组件应该有接收list，deleteItem，changeStatus, handleBlur属性<span class="string">", () =&gt; &#123;</span></span><br><span class="line"><span class="string">        const wrapper = shallow(&lt;TodoList /&gt;);</span></span><br><span class="line"><span class="string">        const undoList = wrapper.find("</span>UndoList<span class="string">");</span></span><br><span class="line"><span class="string">        expect(undoList.prop("</span>list<span class="string">")).toBeTruthy();</span></span><br><span class="line"><span class="string">        expect(undoList.prop("</span>deleteItem<span class="string">")).toBeTruthy();</span></span><br><span class="line"><span class="string">        expect(undoList.prop("</span>changeStatus<span class="string">")).toBeTruthy();</span></span><br><span class="line"><span class="string">        expect(undoList.prop("</span>handleBlur<span class="string">")).toBeTruthy();</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    it("</span>deleteItem被执行时，应该删除对应数据项<span class="string">", () =&gt; &#123;</span></span><br><span class="line"><span class="string">        const wrapper = shallow(&lt;TodoList /&gt;);</span></span><br><span class="line"><span class="string">        const data =[</span></span><br><span class="line"><span class="string">            &#123;status: "</span>div<span class="string">",value: "</span>react<span class="string">"&#125;,</span></span><br><span class="line"><span class="string">            &#123;status: "</span>div<span class="string">",value: "</span>ject<span class="string">"&#125;,</span></span><br><span class="line"><span class="string">            &#123;status: "</span>div<span class="string">",value: "</span>enzyme<span class="string">"&#125;,</span></span><br><span class="line"><span class="string">        ]</span></span><br><span class="line"><span class="string">        wrapper.setState(&#123;undoList: data&#125;);</span></span><br><span class="line"><span class="string">        wrapper.instance().deleteItem(1);</span></span><br><span class="line"><span class="string">        expect(wrapper.state("</span>undoList<span class="string">")).toEqual([data[0], data[2]])</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     it("</span>changeStatus被执行时，undoList数据项被修改<span class="string">", () =&gt; &#123;</span></span><br><span class="line"><span class="string">         const wrapper = shallow(&lt;TodoList /&gt;);</span></span><br><span class="line"><span class="string">        const data =[</span></span><br><span class="line"><span class="string">            &#123;status: "</span>div<span class="string">",value: "</span>react<span class="string">"&#125;,</span></span><br><span class="line"><span class="string">            &#123;status: "</span>div<span class="string">",value: "</span>ject<span class="string">"&#125;,</span></span><br><span class="line"><span class="string">            &#123;status: "</span>div<span class="string">",value: "</span>enzyme<span class="string">"&#125;,</span></span><br><span class="line"><span class="string">        ]</span></span><br><span class="line"><span class="string">         wrapper.setState(&#123;undoList: data&#125;);</span></span><br><span class="line"><span class="string">         wrapper.instance().changeStatus(1);</span></span><br><span class="line"><span class="string">         expect(wrapper.state("</span>undoList<span class="string">")[1]).toEqual(&#123;</span></span><br><span class="line"><span class="string">             ...data[1],</span></span><br><span class="line"><span class="string">             status: "</span>input<span class="string">"</span></span><br><span class="line"><span class="string">         &#125;)</span></span><br><span class="line"><span class="string">     &#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     it("</span>handleBlur被执行时，undoList数据项被修改<span class="string">", () =&gt; &#123;</span></span><br><span class="line"><span class="string">         const wrapper = shallow(&lt;TodoList /&gt;);</span></span><br><span class="line"><span class="string">        const data =[</span></span><br><span class="line"><span class="string">            &#123;status: "</span>input<span class="string">",value: "</span>react<span class="string">"&#125;,</span></span><br><span class="line"><span class="string">            &#123;status: "</span>div<span class="string">",value: "</span>ject<span class="string">"&#125;,</span></span><br><span class="line"><span class="string">            &#123;status: "</span>div<span class="string">",value: "</span>enzyme<span class="string">"&#125;,</span></span><br><span class="line"><span class="string">        ]</span></span><br><span class="line"><span class="string">         wrapper.setState(&#123;undoList: data&#125;);</span></span><br><span class="line"><span class="string">         wrapper.instance().handleBlur(0);</span></span><br><span class="line"><span class="string">         expect(wrapper.state("</span>undoList<span class="string">")[0]).toEqual(&#123;</span></span><br><span class="line"><span class="string">             ...data[0],</span></span><br><span class="line"><span class="string">             status: "</span>div<span class="string">"</span></span><br><span class="line"><span class="string">         &#125;)</span></span><br><span class="line"><span class="string">     &#125;)</span></span><br><span class="line"><span class="string">&#125;)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-undoList组件单元测试"><a href="#3-undoList组件单元测试" class="headerlink" title="3. undoList组件单元测试"></a>3. undoList组件单元测试</h2><p>undoList组件是TodoList组件的子组件，控制显示todoList数据，主要包含title、统计添加的todo数据项个数、显示添加的数据项，以及父亲组件传入修改的数据项。</p>
+<ul>
+<li>当没有添加todo数据项时，count的长度为0</li>
+<li>当添加了todo数据项时，显示数量以及对应的数据项</li>
+<li>当有todo数据项时，每个数据项显示删除按钮</li>
+<li>当有todo数据项时，点击数据项时触发改变数据项状态函数</li>
+<li>当数据项状态为可修改时，失去焦点时触发失去失去焦点函数</li>
+<li>当数据项状态为可修改时，修改数据时触发数据项值改变的函数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">UndoList</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">const</span> &#123; list, deleteItem, changeStatus, handleBlur, handleValueChange &#125; = <span class="keyword">this</span>.props;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div className=<span class="string">"undo-list"</span>&gt;</span><br><span class="line">                &lt;div className=<span class="string">"undo-list-title"</span>&gt;</span><br><span class="line">                    正在进行</span><br><span class="line">                    &lt;span className=<span class="string">"undo-list-count"</span> data-test=<span class="string">"count"</span>&gt;&#123;list.length&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>div&gt;</span><br><span class="line"></span><br><span class="line">                &lt;ul className=<span class="string">"undo-list-content"</span>&gt;</span><br><span class="line">                    &#123;</span><br><span class="line">                        list.map(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">                            <span class="keyword">return</span> (</span><br><span class="line">                                &lt;li</span><br><span class="line">                                    className=<span class="string">"undo-list-item"</span></span><br><span class="line">                                    data-test=<span class="string">"listItem"</span></span><br><span class="line">                                    key=&#123;<span class="string">`<span class="subst">$&#123;item&#125;</span>-<span class="subst">$&#123;index&#125;</span>`</span>&#125;</span><br><span class="line">                                    onClick=&#123;() =&gt; changeStatus(index)&#125;</span><br><span class="line">                                &gt;</span><br><span class="line">                                    &#123;item.status === <span class="string">"div"</span> ? item.value : (</span><br><span class="line">                                        &lt;input </span><br><span class="line">                                        value=&#123;item.value&#125;</span><br><span class="line">                                        data-test=<span class="string">"input"</span></span><br><span class="line">                                        className=<span class="string">"undo-list-input"</span></span><br><span class="line">                                        onBlur=&#123;() =&gt; handleBlur(index)&#125;</span><br><span class="line">                                        onChange=&#123;(e) =&gt; handleValueChange(index, e.target.value)&#125;</span><br><span class="line">                                        /&gt;</span><br><span class="line">                                    )&#125;</span><br><span class="line">                                    &lt;span</span><br><span class="line">                                        className=<span class="string">"undo-list-delete"</span></span><br><span class="line">                                        data-test=<span class="string">"deleteItem"</span></span><br><span class="line">                                        onClick=&#123;(e) =&gt; &#123;</span><br><span class="line">                                            e.stopPropagation()</span><br><span class="line">                                            deleteItem(index)</span><br><span class="line">                                        &#125;&#125;&gt;-<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line">                                &lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">                            )</span></span><br><span class="line"><span class="regexp">                        &#125;)</span></span><br><span class="line"><span class="regexp">                    &#125;</span></span><br><span class="line"><span class="regexp">                &lt;/u</span>l&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ undoList.test.jsx</span></span><br><span class="line"><span class="regexp">import React from "react";</span></span><br><span class="line"><span class="regexp">import &#123; shallow &#125; from "enzyme";</span></span><br><span class="line"><span class="regexp">import UndoList from "../</span>../UndoList<span class="string">";</span></span><br><span class="line"><span class="string">import &#123; findTestWrapper &#125; from "</span>../../../common/util/testUtils<span class="string">";</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">describe("</span>UndoList Component Test<span class="string">", () =&gt; &#123;</span></span><br><span class="line"><span class="string">    it("</span>当数据为空数组时，count为<span class="number">0</span>，列表无内容<span class="string">", () =&gt; &#123;</span></span><br><span class="line"><span class="string">        const undoList = [];</span></span><br><span class="line"><span class="string">        const wrapper = shallow(&lt;UndoList list=&#123;undoList&#125; /&gt;);</span></span><br><span class="line"><span class="string">        const countElem = findTestWrapper(wrapper, "</span>count<span class="string">");</span></span><br><span class="line"><span class="string">        const listItems = findTestWrapper(wrapper, "</span>listItem<span class="string">");</span></span><br><span class="line"><span class="string">        expect(countElem.text()).toBe("</span><span class="number">0</span><span class="string">");</span></span><br><span class="line"><span class="string">        expect(listItems.length).toEqual(0);</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    it("</span>当数据不为空数组时，显示count，列表内容不为空<span class="string">", () =&gt; &#123;</span></span><br><span class="line"><span class="string">        const undoList = [</span></span><br><span class="line"><span class="string">            &#123; status: "</span>div<span class="string">", value: "</span>react<span class="string">" &#125;,</span></span><br><span class="line"><span class="string">            &#123; status: "</span>div<span class="string">", value: "</span>ject<span class="string">" &#125;,</span></span><br><span class="line"><span class="string">            &#123; status: "</span>div<span class="string">", value: "</span>enzyme<span class="string">" &#125;,</span></span><br><span class="line"><span class="string">        ];</span></span><br><span class="line"><span class="string">        const wrapper = shallow(&lt;UndoList list=&#123;undoList&#125; /&gt;);</span></span><br><span class="line"><span class="string">        const countElem = findTestWrapper(wrapper, "</span>count<span class="string">");</span></span><br><span class="line"><span class="string">        const listItems = findTestWrapper(wrapper, "</span>listItem<span class="string">");</span></span><br><span class="line"><span class="string">        expect(countElem.text()).toBe("</span><span class="number">3</span><span class="string">");</span></span><br><span class="line"><span class="string">        expect(listItems.length).toEqual(3);</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    it("</span>当数据不为空数组时，应该有删除按钮<span class="string">", () =&gt; &#123;</span></span><br><span class="line"><span class="string">        const undoList = [</span></span><br><span class="line"><span class="string">            &#123; status: "</span>div<span class="string">", value: "</span>react<span class="string">" &#125;,</span></span><br><span class="line"><span class="string">            &#123; status: "</span>div<span class="string">", value: "</span>ject<span class="string">" &#125;,</span></span><br><span class="line"><span class="string">            &#123; status: "</span>div<span class="string">", value: "</span>enzyme<span class="string">" &#125;,</span></span><br><span class="line"><span class="string">        ];</span></span><br><span class="line"><span class="string">        const wrapper = shallow(&lt;UndoList list=&#123;undoList&#125; /&gt;);</span></span><br><span class="line"><span class="string">        const deleteItem = findTestWrapper(wrapper, "</span>deleteItem<span class="string">");</span></span><br><span class="line"><span class="string">        expect(deleteItem.length).toEqual(3);</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    it("</span>当数据不为空数组时，点击某个删除按钮，调用删除方法<span class="string">", () =&gt; &#123;</span></span><br><span class="line"><span class="string">        const fn = jest.fn();</span></span><br><span class="line"><span class="string">        const index = 1;</span></span><br><span class="line"><span class="string">        const undoList = [</span></span><br><span class="line"><span class="string">            &#123; status: "</span>div<span class="string">", value: "</span>react<span class="string">" &#125;,</span></span><br><span class="line"><span class="string">            &#123; status: "</span>div<span class="string">", value: "</span>ject<span class="string">" &#125;,</span></span><br><span class="line"><span class="string">            &#123; status: "</span>div<span class="string">", value: "</span>enzyme<span class="string">" &#125;,</span></span><br><span class="line"><span class="string">        ];</span></span><br><span class="line"><span class="string">        const wrapper = shallow(&lt;UndoList list=&#123;undoList&#125; deleteItem=&#123;fn&#125; /&gt;);</span></span><br><span class="line"><span class="string">        const deleteItem = findTestWrapper(wrapper, "</span>deleteItem<span class="string">");</span></span><br><span class="line"><span class="string">        deleteItem.at(index).simulate("</span>click<span class="string">", &#123;</span></span><br><span class="line"><span class="string">            stopPropagation: () =&gt; &#123; &#125; // 阻止事件冒泡</span></span><br><span class="line"><span class="string">        &#125;);</span></span><br><span class="line"><span class="string">        expect(fn).toHaveBeenCalledWith(index);</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    it("</span>当某一项被点击时，触发执行changeStatus函数<span class="string">", () =&gt; &#123;</span></span><br><span class="line"><span class="string">        const fn = jest.fn();</span></span><br><span class="line"><span class="string">        const index = 1;</span></span><br><span class="line"><span class="string">        const undoList = [</span></span><br><span class="line"><span class="string">            &#123; status: "</span>div<span class="string">", value: "</span>react<span class="string">" &#125;,</span></span><br><span class="line"><span class="string">            &#123; status: "</span>div<span class="string">", value: "</span>ject<span class="string">" &#125;,</span></span><br><span class="line"><span class="string">            &#123; status: "</span>div<span class="string">", value: "</span>enzyme<span class="string">" &#125;,</span></span><br><span class="line"><span class="string">        ];</span></span><br><span class="line"><span class="string">        const wrapper = shallow(&lt;UndoList list=&#123;undoList&#125; changeStatus=&#123;fn&#125; /&gt;);</span></span><br><span class="line"><span class="string">        const changeStatus = findTestWrapper(wrapper, "</span>listItem<span class="string">");</span></span><br><span class="line"><span class="string">        changeStatus.at(index).simulate("</span>click<span class="string">");</span></span><br><span class="line"><span class="string">        expect(fn).toHaveBeenCalledWith(index);</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    it("</span>当某一项的状态为‘input’时，存在一个输入框<span class="string">", () =&gt; &#123;</span></span><br><span class="line"><span class="string">        const undoList = [</span></span><br><span class="line"><span class="string">            &#123; status: "</span>input<span class="string">", value: "</span>react<span class="string">" &#125;,</span></span><br><span class="line"><span class="string">            &#123; status: "</span>div<span class="string">", value: "</span>ject<span class="string">" &#125;,</span></span><br><span class="line"><span class="string">            &#123; status: "</span>div<span class="string">", value: "</span>enzyme<span class="string">" &#125;,</span></span><br><span class="line"><span class="string">        ];</span></span><br><span class="line"><span class="string">        const wrapper = shallow(&lt;UndoList list=&#123;undoList&#125; /&gt;);</span></span><br><span class="line"><span class="string">        const inputElem = findTestWrapper(wrapper, "</span>input<span class="string">");</span></span><br><span class="line"><span class="string">        expect(inputElem.length).toBe(1);</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    it("</span>当某一项失去焦点时，执行handleBlur函数<span class="string">", () =&gt; &#123;</span></span><br><span class="line"><span class="string">        const fn = jest.fn();</span></span><br><span class="line"><span class="string">        const undoList = [</span></span><br><span class="line"><span class="string">            &#123; status: "</span>input<span class="string">", value: "</span>react<span class="string">" &#125;,</span></span><br><span class="line"><span class="string">            &#123; status: "</span>div<span class="string">", value: "</span>ject<span class="string">" &#125;,</span></span><br><span class="line"><span class="string">            &#123; status: "</span>div<span class="string">", value: "</span>enzyme<span class="string">" &#125;,</span></span><br><span class="line"><span class="string">        ];</span></span><br><span class="line"><span class="string">        const wrapper = shallow(&lt;UndoList list=&#123;undoList&#125; handleBlur=&#123;fn&#125; /&gt;);</span></span><br><span class="line"><span class="string">        const inputElem = findTestWrapper(wrapper, "</span>input<span class="string">");</span></span><br><span class="line"><span class="string">        inputElem.simulate("</span>blur<span class="string">");</span></span><br><span class="line"><span class="string">        expect(fn).toHaveBeenCalledWith(0);</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">  it('当某一个输入框变更时，触发 handleValueChange 方法', () =&gt; &#123;</span></span><br><span class="line"><span class="string">    const listData = [</span></span><br><span class="line"><span class="string">      &#123; status: 'input',value: 'jest' &#125;,</span></span><br><span class="line"><span class="string">    ]</span></span><br><span class="line"><span class="string">    const value = 'react';</span></span><br><span class="line"><span class="string">    const fn = jest.fn();</span></span><br><span class="line"><span class="string">    const wrapper = shallow(&lt;UndoList handleValueChange=&#123;fn&#125; list=&#123;listData&#125;/&gt;);</span></span><br><span class="line"><span class="string">    const inputElem = findTestWrapper(wrapper, "</span>input<span class="string">");</span></span><br><span class="line"><span class="string">    inputElem.simulate('change', &#123;</span></span><br><span class="line"><span class="string">      target: &#123;value&#125;</span></span><br><span class="line"><span class="string">    &#125;);</span></span><br><span class="line"><span class="string">    expect(fn).toHaveBeenLastCalledWith(0, value);</span></span><br><span class="line"><span class="string">  &#125;);</span></span><br><span class="line"><span class="string">&#125;)</span></span><br></pre></td></tr></table></figure>
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get"
+              action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            Nyan Shen
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="https://avatars3.githubusercontent.com/u/25915814?s=400&u=ba4588d90273b5665763d5272218d066548f3121&v=4" width="140" height="140"
+                 alt="个人头像" class="author-image">
+            <p class="author-description"><p>hard work will payoff</p>
+</p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/react typescript jest config/">react typescript jest config (一)</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/js-variables/">Javasript Variables</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/jest-异步代码测试方法/">jest-异步代码测试方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/Jest Setup and Teardown/">Jest Setup and Teardown</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/es6-新特性/">es6 新特性</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/jest test todo list/">jest test todo list</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/Jest Setup and Teardown/">Jest Setup and Teardown</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/js-variables/">Javasript Variables</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/react typescript jest config/">react typescript jest config (一)</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/jest-异步代码测试方法/">jest-异步代码测试方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/es6-新特性/">es6 新特性</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/jest test todo list/">jest test todo list</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2019/08/06/jest test todo list/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/08/06/jest test todo list/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/08/06/jest test todo list/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/jest/" style="font-size: 12.760997135313119px;" class="tag-cloud-link">jest</a>
+    
+    <a href="/tags/javascript/" style="font-size: 15.994713896137622px;" class="tag-cloud-link">javascript</a>
+    
+    <a href="/tags/react/" style="font-size: 16.616829902126035px;" class="tag-cloud-link">react</a>
+    
+    <a href="/tags/enzyme/" style="font-size: 17.635595913213827px;" class="tag-cloud-link">enzyme</a>
+    
+    <a href="/tags/typescript/" style="font-size: 9.281356040569179px;" class="tag-cloud-link">typescript</a>
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="http://kdays.net/days/" target="_blank">KDays Forum</a>
+    </li>
+    
+    <li>
+        <a href="http://www.gal123.com/" target="_blank">绅士导航♂</a>
+    </li>
+    
+    <li>
+        <a href="http://www.moe123.com/" target="_blank">萌导航</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/NyanShen/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://juejin.im/timeline" target="_blank">掘金</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com/people/nyanshen/activities" target="_blank">知乎</a>
+    </li>
+    
+    <li>
+        <a href="https://www.cnblogs.com/Nyan-Workflow-FC/" target="_blank">博客园</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 Nyan Shen Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+
+</html>
