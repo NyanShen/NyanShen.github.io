@@ -130,11 +130,11 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/javascript/">javascript</a>
+                            <a href="/tags/typescript/">typescript</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/react/">react</a>
+                            <a href="/tags/javascript/">javascript</a>
                         </li>
                         
                         
@@ -186,11 +186,11 @@
                 
                 <a href="/tags/jest/">jest</a>, 
                 
+                <a href="/tags/typescript/">typescript</a>, 
+                
                 <a href="/tags/react/">react</a>, 
                 
-                <a href="/tags/enzyme/">enzyme</a>, 
-                
-                <a href="/tags/typescript/">typescript</a>
+                <a href="/tags/enzyme/">enzyme</a>
                 
             </span>
             
@@ -217,11 +217,11 @@
                 
                 <a href="/tags/jest/">jest</a>, 
                 
+                <a href="/tags/typescript/">typescript</a>, 
+                
                 <a href="/tags/react/">react</a>, 
                 
-                <a href="/tags/enzyme/">enzyme</a>, 
-                
-                <a href="/tags/typescript/">typescript</a>
+                <a href="/tags/enzyme/">enzyme</a>
                 
                 
                 
@@ -241,7 +241,20 @@
 
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="string">"roots"</span>: [ <span class="comment">// 要测试的根目录默认为&lt;rootDir&gt;</span></span><br><span class="line">    <span class="string">"&lt;rootDir&gt;/src"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"transform"</span>: &#123;</span><br><span class="line">    <span class="string">"^.+\\.tsx?$"</span>: <span class="string">"ts-jest"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 设置识别哪些文件是测试文件（正则形式），与testMatch互斥</span></span><br><span class="line">  <span class="string">"testRegex"</span>: <span class="string">"(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$"</span>,</span><br><span class="line">  <span class="string">"moduleFileExtensions"</span>: [</span><br><span class="line">    <span class="string">"ts"</span>,</span><br><span class="line">    <span class="string">"tsx"</span>,</span><br><span class="line">    <span class="string">"js"</span>,</span><br><span class="line">    <span class="string">"jsx"</span>,</span><br><span class="line">    <span class="string">"json"</span>,</span><br><span class="line">    <span class="string">"node"</span></span><br><span class="line">  ], </span><br><span class="line">  <span class="comment">// 测试环境，默认值是：jsdom，可修改为node</span></span><br><span class="line">  testRnviroment: <span class="string">"jsdom"</span>,</span><br><span class="line">  <span class="comment">// setup enzyme</span></span><br><span class="line">  setupFilesAfterEnv: [<span class="string">"&lt;rootDir&gt;/src/config/setup-test.ts"</span>],</span><br><span class="line">  snapshotSerializers: [<span class="string">"enzyme-to-json/serializer"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="4-jest-enzyme-config（这一点实现有问题，请暂时忽略）"><a href="#4-jest-enzyme-config（这一点实现有问题，请暂时忽略）" class="headerlink" title="4. jest-enzyme config（这一点实现有问题，请暂时忽略）"></a>4. jest-enzyme config（这一点实现有问题，请暂时忽略）</h2><p>The best setup is to use jest-environment-enzyme</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i jest-environment-enzyme jest-enzyme -D</span><br></pre></td></tr></table></figure>
 
+<p>jest config add like: </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"setupTestFrameworkScriptFile"</span>: <span class="string">"jest-enzyme"</span>,</span><br><span class="line">  <span class="string">"testEnvironment"</span>: <span class="string">"enzyme"</span>,</span><br><span class="line">  <span class="string">"testEnvironmentOptions"</span>: &#123;</span><br><span class="line">    <span class="string">"enzymeAdapter"</span>: <span class="string">"react16"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>If you prefer not to use the environment, you can also do this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"setupFilesAfterEnv"</span>: [<span class="string">'./node_modules/jest-enzyme/lib/index.js'</span>],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>As with Create React App, when using <code>jest-enzyme</code> with <code>TypeScript</code> and <code>ts-jest</code>, you’ll need to add a <code>setupTests.ts</code> file to your app that explicitly imports <code>jest-enzyme</code>, and point the <code>setupTestFrameworkScriptFile</code> field in your <code>jest.config.js</code> or <code>package.json</code>.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// setupTests.ts</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'jest-enzyme'</span>;</span><br><span class="line"><span class="comment">// jest.config.js</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"setupTestFrameworkScriptFile"</span>: <span class="string">"./src/config/setupTests.ts"</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>** notice: 测试组件文件后缀为.tsx **<br>“setupTestFrameworkScriptFile” was replace by configuration “setupFilesAfterEnv”, which supports multi path.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"setupFilesAfterEnv"</span>: [<span class="string">'./node_modules/jest-enzyme/lib/index.js'</span>, <span class="string">'jest-enzyme'</span>],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 </article>
 
@@ -303,6 +316,12 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2019/08/08/jest config issue/">react typescript jest config (二)</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2019/08/07/react typescript jest config (二)/">react typescript jest config (二)</a>
                 </span>
             </li>
@@ -361,7 +380,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2019/08/08/jest config issue/">react typescript jest config (二)</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2019/08/03/Jest Setup and Teardown/">Jest Setup and Teardown</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/02/jest-异步代码测试方法/">jest-异步代码测试方法</a>
                 </span>
             </li>
             
@@ -374,12 +405,6 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2019/08/07/react typescript jest config (二)/">react typescript jest config (二)</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/08/02/jest-异步代码测试方法/">jest-异步代码测试方法</a>
                 </span>
             </li>
             
@@ -430,15 +455,15 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/jest/" style="font-size: 13.908021378780301px;" class="tag-cloud-link">jest</a>
+    <a href="/tags/jest/" style="font-size: 18.050588233252824px;" class="tag-cloud-link">jest</a>
     
-    <a href="/tags/javascript/" style="font-size: 10.223841929184022px;" class="tag-cloud-link">javascript</a>
+    <a href="/tags/typescript/" style="font-size: 10.934746626941845px;" class="tag-cloud-link">typescript</a>
     
-    <a href="/tags/react/" style="font-size: 9.388780334202671px;" class="tag-cloud-link">react</a>
+    <a href="/tags/javascript/" style="font-size: 16.702114137259052px;" class="tag-cloud-link">javascript</a>
     
-    <a href="/tags/enzyme/" style="font-size: 9.135460005579638px;" class="tag-cloud-link">enzyme</a>
+    <a href="/tags/react/" style="font-size: 11.424920797585937px;" class="tag-cloud-link">react</a>
     
-    <a href="/tags/typescript/" style="font-size: 15.594556328591025px;" class="tag-cloud-link">typescript</a>
+    <a href="/tags/enzyme/" style="font-size: 12.762012922487902px;" class="tag-cloud-link">enzyme</a>
     
 </div>
                 
