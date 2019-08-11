@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Nyan Shen">
+    
+    <meta name="description" content="hard work will payoff">
+    
+    
+    
+    
+    
+    
+    <title>webpack 4.x common config | sym blog</title>
+    <link href="”https://nyanshen.github.io“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/https:/avatars3.githubusercontent.com/u/25915814?s=400&u=ba4588d90273b5665763d5272218d066548f3121&v=4'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target=".bs-navbar-collapse"
+                    aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://nyanshen.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">sym blog</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>home
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>archive
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/categories">
+                        <i class="fa fa-list"></i>categories
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>tags
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/jest/">jest</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/typescript/">typescript</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/javascript/">javascript</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/tags">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/about">
+                        <i class="fa fa-user"></i>about me
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://nyanshen.github.io">sym blog</a>
+        >
+        <span>webpack 4.x common config</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2019/08/10/webpack common config/">webpack 4.x common config</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/react/">react</a>, 
+                
+                <a href="/tags/webpack/">webpack</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2019-08-10
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2019/08/10/webpack common config/">webpack 4.x common config</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2019-08-10
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/react/">react</a>, 
+                
+                <a href="/tags/webpack/">webpack</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h2 id="1-install-dependencies"><a href="#1-install-dependencies" class="headerlink" title="1. install dependencies"></a>1. install dependencies</h2><p>webpack basic</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i webpack weebpack-cli webpack-merge -D</span><br></pre></td></tr></table></figure>
+
+<p>html packing plugin</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i html-webpack-plugin -D</span><br></pre></td></tr></table></figure>
+
+<p>css packing plugin, It supports On-Demand-Loading of CSS and SourceMaps.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i style-loader css-loader postcss-loader scss-loader autoprefixer -D</span><br><span class="line">npm i mini-css-extract-plugin OptimizeCssAssetsPlugin -D</span><br><span class="line">npm i sass-resources-loader node-sass -D</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>scss-loader将scss样式转换为css,</li>
+<li>postcss-loader对转好的css样式做一些列处理</li>
+<li>css-loader将处理好的css样式转为字符串，</li>
+<li>style-loader将css-loader打包好的样式字符串，载入html的style标签上。</li>
+<li>miniCssExtractLoader将html里的样式，抽取出来放到link标签引入</li>
+<li>autoprefixer样式智能加后缀</li>
+</ul>
+<p>build after clean</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i clean-webpack-plugin -D</span><br></pre></td></tr></table></figure>
+
+<p>加载图片资源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i file-loader url-loader -D</span><br></pre></td></tr></table></figure>
+
+<p>打包体积优化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i terser-webpack-plugin optimize-css-assets-webpack-plugin -D</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hash: 每次编译compilation对象的hash,全局一致,跟每次编译有关，跟单个文件无关，不推荐使用</li>
+<li>chunkhash: chunk的hash,chunk中包含的任一模块发生改变，则chunkhash发生变化，推荐使用。</li>
+<li>contenthash: css文件特有的hash值，是根据css文件内容计算出来的，css发生变化则其值发生变化，推荐css导出中使用</li>
+</ul>
+<p>分析打包结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i webpack-bundle-analyzer -D</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-webpack-base-config"><a href="#2-webpack-base-config" class="headerlink" title="2. webpack.base.config"></a>2. webpack.base.config</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">"html-webpack-plugin"</span>);</span><br><span class="line"><span class="keyword">const</span> MiniCssExtractPlugin = <span class="built_in">require</span>(<span class="string">"mini-css-extract-plugin"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isDev = process.env.NODE_ENV === <span class="string">"development"</span>;</span><br><span class="line"><span class="keyword">const</span> styleLoader = isDev ? <span class="string">"style-loader"</span> : MiniCssExtractPlugin.loader;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    mode: isDev ? <span class="string">"development"</span> : <span class="string">"production"</span>,</span><br><span class="line">    entry: <span class="string">"./src/index.tsx"</span>,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [<span class="string">".ts"</span>, <span class="string">".tsx"</span>, <span class="string">".js"</span>, <span class="string">".json"</span>],</span><br><span class="line">        alias: &#123;</span><br><span class="line">            <span class="string">"@assets"</span>: path.resolve(__dirname, <span class="string">"src/assets/"</span>),</span><br><span class="line">            <span class="string">"@components"</span>: path.resolve(__dirname, <span class="string">"src/components/"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.tsx?$/</span>,</span><br><span class="line">                exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">                loader: <span class="string">"awesome-typescript-loader"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">                enforce: <span class="string">"pre"</span>,</span><br><span class="line">                loader: <span class="string">"source-map-loader"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">                use: [</span><br><span class="line">                    styleLoader,</span><br><span class="line">                    &#123;</span><br><span class="line">                        loader: <span class="string">"css-loader"</span>,</span><br><span class="line">                        options: &#123;</span><br><span class="line">                            importLoaders: <span class="number">1</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    <span class="string">"postcss-loader"</span></span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">                use: [</span><br><span class="line">                    styleLoader,</span><br><span class="line">                    &#123;</span><br><span class="line">                        loader: <span class="string">"css-loader"</span>,</span><br><span class="line">                        options: &#123;</span><br><span class="line">                            importLoaders: <span class="number">3</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    <span class="string">"postcss-loader"</span>,</span><br><span class="line">                    <span class="string">"sass-loader"</span>,</span><br><span class="line">                    &#123;</span><br><span class="line">                        loader: <span class="string">"sass-resources-loader"</span>,</span><br><span class="line">                        options: &#123;</span><br><span class="line">                            resources: [</span><br><span class="line">                                <span class="string">"./src/styles/_variables.scss"</span>,</span><br><span class="line">                                <span class="string">"./src/styles/_mixins.scss"</span></span><br><span class="line">                            ]</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.(png|jpe?g|svg|gif)$/</span>,</span><br><span class="line">                use: &#123;</span><br><span class="line">                    loader: <span class="string">"url-loader"</span>,</span><br><span class="line">                    options: &#123;</span><br><span class="line">                        limit: <span class="number">3</span> * <span class="number">1024</span> <span class="comment">//3k, 超过3k不被处理为base64</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.(eot|woff|woff2|ttf)$/</span>,</span><br><span class="line">                loader: <span class="string">"file-loader"</span>,</span><br><span class="line">                query: &#123;</span><br><span class="line">                    name: <span class="string">"assets/[name].[hash].[ext]"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    externals: &#123;</span><br><span class="line">        <span class="string">"react"</span>: <span class="string">"React"</span>,</span><br><span class="line">        <span class="string">"react-dom"</span>: <span class="string">"ReactDOM"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">            template: <span class="string">"./src/index.html"</span>,</span><br><span class="line">            filename: <span class="string">"index.html"</span></span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-webpack-development-config"><a href="#3-webpack-development-config" class="headerlink" title="3. webpack.development.config"></a>3. webpack.development.config</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">"webpack"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        port: <span class="number">3000</span>,</span><br><span class="line">        hot: <span class="literal">true</span>,</span><br><span class="line">        open: <span class="string">"Chrome"</span>,</span><br><span class="line">        inline: <span class="literal">true</span>, <span class="comment">//自动刷新</span></span><br><span class="line">        historyApiFallback: <span class="literal">true</span>,</span><br><span class="line">        overlay: &#123;</span><br><span class="line">            warnings: <span class="literal">true</span>,</span><br><span class="line">            errors: <span class="literal">true</span></span><br><span class="line">        &#125;,</span><br><span class="line">        proxy: &#123;</span><br><span class="line">            <span class="string">"/api/*"</span>: &#123;</span><br><span class="line">                target: <span class="string">"http://localhost:12306"</span>,</span><br><span class="line">                changeOrigin: <span class="literal">false</span>,</span><br><span class="line">                secure: <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> webpack.DefinePlugin(&#123;</span><br><span class="line">            <span class="string">"process.env.NODE_ENV"</span>: <span class="built_in">JSON</span>.stringify(<span class="string">"development"</span>)</span><br><span class="line">        &#125;),</span><br><span class="line">        <span class="comment">//开启HMR(热替换功能,替换更新部分,不重载页面！)</span></span><br><span class="line">        <span class="keyword">new</span> webpack.HotModuleReplacementPlugin(),</span><br><span class="line">        <span class="comment">//显示模块相对路径</span></span><br><span class="line">        <span class="keyword">new</span> webpack.NamedModulesPlugin()</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-webpack-production-config"><a href="#4-webpack-production-config" class="headerlink" title="4. webpack.production.config"></a>4. webpack.production.config</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">"webpack"</span>);</span><br><span class="line"><span class="keyword">const</span> TerserPlugin = <span class="built_in">require</span>(<span class="string">"terser-webpack-plugin"</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; CleanWebpackPlugin &#125; = <span class="built_in">require</span>(<span class="string">"clean-webpack-plugin"</span>);</span><br><span class="line"><span class="keyword">const</span> MiniCssExtractPlugin = <span class="built_in">require</span>(<span class="string">"mini-css-extract-plugin"</span>);</span><br><span class="line"><span class="keyword">const</span> OptimizeCssAssetsPlugin = <span class="built_in">require</span>(<span class="string">"optimize-css-assets-webpack-plugin"</span>);</span><br><span class="line"><span class="keyword">const</span> BundleAnalyzerPlugin = <span class="built_in">require</span>(<span class="string">"webpack-bundle-analyzer"</span>).BundleAnalyzerPlugin;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, <span class="string">'./dist'</span>),</span><br><span class="line">        filename: <span class="string">"js/bundle.[chunkhash:8].js"</span>,</span><br><span class="line">        chunkFilename: <span class="string">'js/[name].[id].[chunkhash:8].js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> CleanWebpackPlugin(),</span><br><span class="line">        <span class="keyword">new</span> MiniCssExtractPlugin(&#123;</span><br><span class="line">            filename: <span class="string">"css/[name].[contenthash:8].css"</span>,</span><br><span class="line">            chunkFilename: <span class="string">"css/[id].[contenthash:8].css"</span></span><br><span class="line">        &#125;),</span><br><span class="line">        <span class="keyword">new</span> OptimizeCssAssetsPlugin(),</span><br><span class="line">        <span class="keyword">new</span> webpack.DefinePlugin(&#123;</span><br><span class="line">            <span class="string">"process.env.NODE_ENV"</span>: <span class="built_in">JSON</span>.stringify(<span class="string">"production"</span>)</span><br><span class="line">        &#125;),</span><br><span class="line">        <span class="keyword">new</span> BundleAnalyzerPlugin()</span><br><span class="line">    ],</span><br><span class="line">    optimization: &#123;</span><br><span class="line">        minimizer: [</span><br><span class="line">            <span class="keyword">new</span> TerserPlugin(&#123;</span><br><span class="line">                cache: <span class="literal">true</span>,</span><br><span class="line">                parallel: <span class="literal">true</span>,</span><br><span class="line">                terserOptions: &#123;</span><br><span class="line">                    unused: <span class="literal">true</span>, <span class="comment">// 删除无用代码</span></span><br><span class="line">                    drop_debugger: <span class="literal">true</span>,</span><br><span class="line">                    drop_console: <span class="literal">true</span>,</span><br><span class="line">                    dead_code: <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        ],</span><br><span class="line">        splitChunks: &#123;</span><br><span class="line">          chunks: <span class="string">'all'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get"
+              action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            Nyan Shen
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="https://avatars3.githubusercontent.com/u/25915814?s=400&u=ba4588d90273b5665763d5272218d066548f3121&v=4" width="140" height="140"
+                 alt="个人头像" class="author-image">
+            <p class="author-description"><p>hard work will payoff</p>
+</p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/10/webpack common config/">webpack 4.x common config</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/10/react hooks testing/">testing reack hooks</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/09/unit test for react/">jest enzyme unit test react</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/08/jest config issue/">jest config issue assets &amp;&amp; alias</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/react typescript jest config (二)/">react typescript jest config (二)</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/react typescript jest config (一)/">react typescript jest config (一)</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/04/jest test todo list/">jest test todo list</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/03/Jest Setup and Teardown/">Jest Setup and Teardown</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/02/jest-异步代码测试方法/">jest-异步代码测试方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/01/es6-新特性/">es6 新特性</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/08/jest config issue/">jest config issue assets &amp;&amp; alias</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/02/jest-异步代码测试方法/">jest-异步代码测试方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/01/js-variables/">Javasript Variables</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/10/react hooks testing/">testing reack hooks</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/react typescript jest config (一)/">react typescript jest config (一)</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/react typescript jest config (二)/">react typescript jest config (二)</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/10/webpack common config/">webpack 4.x common config</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/01/es6-新特性/">es6 新特性</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/09/unit test for react/">jest enzyme unit test react</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/04/jest test todo list/">jest test todo list</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2019/08/10/webpack common config/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/08/10/webpack common config/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/08/10/webpack common config/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/jest/" style="font-size: 15.951608118782307px;" class="tag-cloud-link">jest</a>
+    
+    <a href="/tags/typescript/" style="font-size: 16.433549729357516px;" class="tag-cloud-link">typescript</a>
+    
+    <a href="/tags/javascript/" style="font-size: 15.47439324109498px;" class="tag-cloud-link">javascript</a>
+    
+    <a href="/tags/react-hooks/" style="font-size: 16.974680904403215px;" class="tag-cloud-link">react hooks</a>
+    
+    <a href="/tags/react/" style="font-size: 15.465767162885172px;" class="tag-cloud-link">react</a>
+    
+    <a href="/tags/enzyme/" style="font-size: 12.940992659333729px;" class="tag-cloud-link">enzyme</a>
+    
+    <a href="/tags/webpack/" style="font-size: 10.480221773702226px;" class="tag-cloud-link">webpack</a>
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="http://kdays.net/days/" target="_blank">KDays Forum</a>
+    </li>
+    
+    <li>
+        <a href="http://www.gal123.com/" target="_blank">绅士导航♂</a>
+    </li>
+    
+    <li>
+        <a href="http://www.moe123.com/" target="_blank">萌导航</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/NyanShen/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://juejin.im/timeline" target="_blank">掘金</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com/people/nyanshen/activities" target="_blank">知乎</a>
+    </li>
+    
+    <li>
+        <a href="https://www.cnblogs.com/Nyan-Workflow-FC/" target="_blank">博客园</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 Nyan Shen Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+
+</html>

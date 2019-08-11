@@ -12,7 +12,7 @@
     
     
     
-    <title>archive_a | sym blog</title>
+    <title>testing reack hooks | sym blog</title>
     <link href="”https://nyanshen.github.io“" rel="”prefetch”">
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -97,7 +97,7 @@
                 
                 
                 
-                <li class="current">
+                <li class="">
                     <a href="/archives">
                         <i class="fa fa-archive"></i>archive
                     </a>
@@ -164,19 +164,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-archive">
+                    
+<article class="article well article-body" id="article">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="https://nyanshen.github.io">sym blog</a>
         >
-        <span>归档</span>
+        <span>testing reack hooks</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/archives">归档</a>
+                <a href="/2019/08/10/react hooks testing/">testing reack hooks</a>
             </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/jest/">jest</a>, 
+                
+                <a href="/tags/react-hooks/">react hooks</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2019-08-10
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -184,67 +201,46 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/archives">归档</a>
+                    <a href="/2019/08/10/react hooks testing/">testing reack hooks</a>
                 </h4>
             </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2019-08-10
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/jest/">jest</a>, 
+                
+                <a href="/tags/react-hooks/">react hooks</a>
+                
+                
+                
+            </p>
         </center>
     </div>
-    <div class="content-article" style="margin-top: 30px;">
-        
-        
-            <h1 style="font-size: 24px; margin-top: 40px;">2019年</h1>
-            
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-             
-             
-                        <a href="/2019/08/10/webpack common config/">webpack 4.x common config</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/10/react hooks testing/">testing reack hooks</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/09/unit test for react/">jest enzyme unit test react</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/08/jest config issue/">jest config issue assets &amp;&amp; alias</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/07/react typescript jest config (二)/">react typescript jest config (二)</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/06/react typescript jest config (一)/">react typescript jest config (一)</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/04/jest test todo list/">jest test todo list</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/03/Jest Setup and Teardown/">Jest Setup and Teardown</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/02/jest-异步代码测试方法/">jest-异步代码测试方法</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/01/es6-新特性/">es6 新特性</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/01/js-variables/">Javasript Variables</a>
-                        <br>
-            
-                    </div>
-        
+    <div class="content-article">
+        <h2 id="1-Can-we-use-Jest-or-Enzyme"><a href="#1-Can-we-use-Jest-or-Enzyme" class="headerlink" title="1. Can we use Jest or Enzyme?"></a>1. Can we use Jest or Enzyme?</h2><p>Hooks can only be called inside the body of a <code>function component</code>. (<a href="https://fb.me/react-invalid-hook-call" target="_blank" rel="noopener">https://fb.me/react-invalid-hook-call</a>)<br>The error above means that Hooks are not yet supported in Enzyme as seen in this issue <a href="https://github.com/airbnb/enzyme/issues/1938" target="_blank" rel="noopener">here</a>.<br>As a result, we cannot use Enzyme to carry out component tests for React Hooks. So what can be used?</p>
+<h2 id="2-Introducing-react-testing-library"><a href="#2-Introducing-react-testing-library" class="headerlink" title="2. Introducing react-testing-library"></a>2. Introducing react-testing-library</h2><p><a href="https://github.com/testing-library/react-testing-library" target="_blank" rel="noopener">react-testing-library</a> is a very light-weight solution for testing React components. It extends upon react-dom and react-dom/test-utils to provide light utility functions. It encourages you to write tests that closely resemble how your react components are used.</p>
+<h2 id="3-Installation"><a href="#3-Installation" class="headerlink" title="3. Installation"></a>3. Installation</h2><p>This module is distributed via <code>npm</code> which is bundled with <code>node</code> and should be installed as one of your project’s devDependencies:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @testing-library/react</span><br></pre></td></tr></table></figure>
+
+<p>This library has <code>peerDependencies</code> listings for <code>react</code> and <code>react-dom</code>.</p>
+<h2 id="4-Suppressing-unnecessary-warnings-on-React-DOM-16-8"><a href="#4-Suppressing-unnecessary-warnings-on-React-DOM-16-8" class="headerlink" title="4. Suppressing unnecessary warnings on React DOM 16.8"></a>4. Suppressing unnecessary warnings on React DOM 16.8</h2><p>There is a known compatibility issue with React DOM 16.8 where you will see the following warning:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Warning: An update to ComponentName inside a test was not wrapped in act(...).</span><br></pre></td></tr></table></figure>
+
+<p>If you cannot upgrade to React DOM 16.9, you may suppress the warnings by adding the following snippet to your test configuration <a href="https://github.com/testing-library/react-testing-library/issues/281" target="_blank" rel="noopener">learn more</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// this is just a little hack to silence a warning that we'll get until we</span></span><br><span class="line"><span class="comment">// upgrade to 16.9: https://github.com/facebook/react/pull/14853</span></span><br><span class="line"><span class="keyword">const</span> originalError = <span class="built_in">console</span>.error</span><br><span class="line">beforeAll(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.error = <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="regexp">/Warning.*not wrapped in act/</span>.test(args[<span class="number">0</span>])) &#123;</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    originalError.call(<span class="built_in">console</span>, ...args)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">afterAll(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.error = originalError</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-configuring-some-import"><a href="#4-configuring-some-import" class="headerlink" title="4. configuring some import"></a>4. configuring some import</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'@testing-library/react/cleanup-after-each'</span> <span class="comment">// deprecated</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'@testing-library/jest-dom/extend-expect'</span> <span class="comment">// not work in jest config file when use typescript</span></span><br></pre></td></tr></table></figure>
+
+<p>these imports are something you’d normally configure Jest to import for you.<br>automatically. Learn more in the setup docs: <a href="https://testing-library.com/docs/react-testing-library/setup#cleanup" target="_blank" rel="noopener">https://testing-library.com/docs/react-testing-library/setup#cleanup</a></p>
+<h2 id="sample-test-Header"><a href="#sample-test-Header" class="headerlink" title="sample test Header"></a>sample test Header</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;useState&#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Header = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> [value, setValue] = useState&lt;string&gt;(<span class="string">""</span>);</span><br><span class="line">    <span class="keyword">const</span> handleInputChange = <span class="function">(<span class="params">event: React.ChangeEvent&lt;HTMLInputElement&gt;</span>) =&gt;</span> &#123;</span><br><span class="line">        setValue(event.target.value)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"header"</span>&gt;</span><br><span class="line">            &lt;div className=<span class="string">"header-content"</span>&gt;</span><br><span class="line">                TodoList</span><br><span class="line">                &lt;input </span><br><span class="line">                value=&#123;value&#125;</span><br><span class="line">                data-testid=<span class="string">"header_input"</span></span><br><span class="line">                onChange=&#123;handleInputChange&#125;</span><br><span class="line">                /&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Header;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Header.test.tsx</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; render, fireEvent &#125; <span class="keyword">from</span> <span class="string">"@testing-library/react"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"@testing-library/jest-dom/extend-expect"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Header <span class="keyword">from</span> <span class="string">"../Header"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> wrapper = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">describe(<span class="string">"test Header component"</span>, () =&gt; &#123;</span><br><span class="line">    beforeEach(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        wrapper = render(<span class="xml"><span class="tag">&lt;<span class="name">Header</span> /&gt;</span>);</span></span><br><span class="line"><span class="xml">    &#125;)</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">    it("should contain title 'TodoList'", () =&gt; &#123; </span></span><br><span class="line"><span class="xml">        const &#123;getByText&#125; = wrapper;</span></span><br><span class="line"><span class="xml">        const title = "TodoList";</span></span><br><span class="line"><span class="xml">        expect(getByText(title)).toBeInTheDocument();</span></span><br><span class="line"><span class="xml">    &#125;)</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">    it("input initial value should be empty", () =&gt; &#123; </span></span><br><span class="line"><span class="xml">        const &#123;getByTestId&#125; = wrapper;</span></span><br><span class="line"><span class="xml">        expect(getByTestId("header_input").value).toEqual("");</span></span><br><span class="line"><span class="xml">    &#125;)</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">    it("value should be set when input some text", () =&gt; &#123;</span></span><br><span class="line"><span class="xml">        const &#123;getByTestId&#125; = wrapper;</span></span><br><span class="line"><span class="xml">        const inputElem = getByTestId("header_input");</span></span><br><span class="line"><span class="xml">        const context = "input text test";</span></span><br><span class="line"><span class="xml">        fireEvent.change(inputElem, &#123;target: &#123;</span></span><br><span class="line"><span class="xml">            value: context</span></span><br><span class="line"><span class="xml">        &#125;&#125;);</span></span><br><span class="line"><span class="xml">        expect(inputElem.value).toEqual(context);</span></span><br><span class="line"><span class="xml">    &#125;)</span></span><br><span class="line"><span class="xml">&#125;)</span></span><br></pre></td></tr></table></figure>
     </div>
 </article>
+
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -390,12 +386,6 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/02/jest-异步代码测试方法/">jest-异步代码测试方法</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2019/08/01/js-variables/">Javasript Variables</a>
                 </span>
             </li>
@@ -436,6 +426,12 @@
                 </span>
             </li>
             
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/04/jest test todo list/">jest test todo list</a>
+                </span>
+            </li>
+            
         </ul>
     </div>
 </aside>
@@ -447,17 +443,17 @@
 
                 
                 <li>
-                    <a href="/archives/2019/08/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2019/08/10/react hooks testing/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/archives/2019/08/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2019/08/10/react hooks testing/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/archives/2019/08/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2019/08/10/react hooks testing/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -465,19 +461,19 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/jest/" style="font-size: 13.422011922516715px;" class="tag-cloud-link">jest</a>
+    <a href="/tags/jest/" style="font-size: 14.06491521017535px;" class="tag-cloud-link">jest</a>
     
-    <a href="/tags/typescript/" style="font-size: 14.414485735433466px;" class="tag-cloud-link">typescript</a>
+    <a href="/tags/typescript/" style="font-size: 11.220861505509351px;" class="tag-cloud-link">typescript</a>
     
-    <a href="/tags/javascript/" style="font-size: 15.297225753714518px;" class="tag-cloud-link">javascript</a>
+    <a href="/tags/javascript/" style="font-size: 8.568356779455922px;" class="tag-cloud-link">javascript</a>
     
-    <a href="/tags/react-hooks/" style="font-size: 16.20414155716413px;" class="tag-cloud-link">react hooks</a>
+    <a href="/tags/react-hooks/" style="font-size: 13.6887081400745px;" class="tag-cloud-link">react hooks</a>
     
-    <a href="/tags/react/" style="font-size: 10.286358105273186px;" class="tag-cloud-link">react</a>
+    <a href="/tags/react/" style="font-size: 14.599624485863025px;" class="tag-cloud-link">react</a>
     
-    <a href="/tags/enzyme/" style="font-size: 16.109805910630175px;" class="tag-cloud-link">enzyme</a>
+    <a href="/tags/enzyme/" style="font-size: 19.45941242443186px;" class="tag-cloud-link">enzyme</a>
     
-    <a href="/tags/webpack/" style="font-size: 17.877499842693474px;" class="tag-cloud-link">webpack</a>
+    <a href="/tags/webpack/" style="font-size: 15.56753702544298px;" class="tag-cloud-link">webpack</a>
     
 </div>
                 

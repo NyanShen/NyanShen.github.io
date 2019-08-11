@@ -12,7 +12,7 @@
     
     
     
-    <title>react typescript jest config (一) | sym blog</title>
+    <title>jest enzyme unit test react | sym blog</title>
     <link href="”https://nyanshen.github.io“" rel="”prefetch”">
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -170,13 +170,13 @@
         <i class="fa fa-home"></i>
         <a href="https://nyanshen.github.io">sym blog</a>
         >
-        <span>react typescript jest config (一)</span>
+        <span>jest enzyme unit test react</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2019/08/06/react typescript jest config (一)/">react typescript jest config (一)</a>
+                <a href="/2019/08/09/unit test for react/">jest enzyme unit test react</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -186,8 +186,6 @@
                 
                 <a href="/tags/jest/">jest</a>, 
                 
-                <a href="/tags/typescript/">typescript</a>, 
-                
                 <a href="/tags/react/">react</a>, 
                 
                 <a href="/tags/enzyme/">enzyme</a>
@@ -195,7 +193,7 @@
             </span>
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2019-08-06
+                <i class="fa fa-calendar"></i> 2019-08-09
             </span>
             
         </div>
@@ -205,19 +203,17 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2019/08/06/react typescript jest config (一)/">react typescript jest config (一)</a>
+                    <a href="/2019/08/09/unit test for react/">jest enzyme unit test react</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2019-08-06
+                <i class="fa fa-calendar"></i> 2019-08-09
             </p>
             <p>
                 
                 <i class="fa fa-tags"></i>
                 
                 <a href="/tags/jest/">jest</a>, 
-                
-                <a href="/tags/typescript/">typescript</a>, 
                 
                 <a href="/tags/react/">react</a>, 
                 
@@ -229,36 +225,57 @@
         </center>
     </div>
     <div class="content-article">
-        <h2 id="1-initialize-project"><a href="#1-initialize-project" class="headerlink" title="1. initialize project"></a>1. initialize project</h2><p>create a folder project<br>Now we’ll turn this folder into an npm package.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+        <h2 id="1-测试类型"><a href="#1-测试类型" class="headerlink" title="1. 测试类型"></a>1. 测试类型</h2><ul>
+<li>单元测试：指的是以原件的单元为单位，对软件进行测试。单元可以是一个函数，也可以是一个模块或一个组件，基本特征就是只要输入不变，必定返回同样的输出。一个软件越容易些单元测试，就表明它的模块化结构越好，给模块之间的耦合越弱。React的组件化和函数式编程，天生适合进行单元测试</li>
+<li>功能测试：相当于是黑盒测试，测试者不了解程序的内部情况，不需要具备编程语言的专门知识，只知道程序的输入、输出和功能，从用户的角度针对软件界面、功能和外部结构进行测试，不考虑内部的逻辑</li>
+<li>集成测试：在单元测试的基础上，将所有模块按照设计要求组装成子系统或者系统，进行测试</li>
+<li>冒烟测试：在正式全面的测试之前，对主要功能进行的与测试，确认主要功能是否满足需要，软件是否能正常运行</li>
+</ul>
+<h2 id="2-开发模式"><a href="#2-开发模式" class="headerlink" title="2. 开发模式"></a>2. 开发模式</h2><ul>
+<li>TDD: 测试驱动开发，英文为Testing Driven Development，强调的是一种开发方式，以测试来驱动整个项目，即先根据接口完成测试编写，然后在完成功能是要不断通过测试，最终目的是通过所有测试</li>
+<li>BDD: 行为驱动测试，英文为Behavior Driven Development，强调的是写测试的风格，即测试要写的像自然语言，让项目的各个成员甚至产品都能看懂测试，甚至编写测试</li>
+</ul>
+<p>TDD和BDD有各自的使用场景，BDD一般偏向于系统功能和业务逻辑的自动化测试设计；而TDD在快速开发并测试功能模块的过程中则更加高效，以快速完成开发为目的。</p>
+<h2 id="3-Jest"><a href="#3-Jest" class="headerlink" title="3. Jest"></a>3. Jest</h2><p>Jest是Facebook开源的一个前端测试框架，主要用于React和React Native的单元测试，已被集成在create-react-app中。Jest特点：</p>
+<ul>
+<li>易用性：基于Jasmine，提供断言库，支持多种测试风格</li>
+<li>适应性：Jest是模块化、可扩展和可配置的</li>
+<li>沙箱和快照：Jest内置了JSDOM，能够模拟浏览器环境，并且并行执行</li>
+<li>快照测试：Jest能够对React组件树进行序列化，生成对应的字符串快照，通过比较字符串提供高性能的UI检测</li>
+<li>Mock系统：Jest实现了一个强大的Mock系统，支持自动和手动mock</li>
+<li>支持异步代码测试：支持Promise和async/await</li>
+<li>自动生成静态分析结果：内置Istanbul，测试代码覆盖率，并生成对应的报告</li>
+</ul>
+<h2 id="4-Enzyme"><a href="#4-Enzyme" class="headerlink" title="4. Enzyme"></a>4. Enzyme</h2><p>Enzyme是Airbnb开源的React测试工具库库，它功能过对官方的测试工具库ReactTestUtils的二次封装，提供了一套简洁强大的 API，并内置Cheerio，<br>实现了jQuery风格的方式进行DOM 处理，开发体验十分友好。在开源社区有超高人气，同时也获得了React 官方的推荐。</p>
+<h4 id="三种渲染方法"><a href="#三种渲染方法" class="headerlink" title="三种渲染方法"></a>三种渲染方法</h4><ul>
+<li>shallow：浅渲染，是对官方的Shallow Renderer的封装。将组件渲染成虚拟DOM对象，只会渲染第一层，子组件将不会被渲染出来，使得效率非常高。不需要DOM环境， 并可以使用jQuery的方式访问组件的信息</li>
+<li>render：静态渲染，它将React组件渲染成静态的HTML字符串，然后使用Cheerio这个库解析这段字符串，并返回一个Cheerio的实例对象，可以用来分析组件的html结构</li>
+<li>mount：完全渲染，它将组件渲染加载成一个真实的DOM节点，用来测试DOM API的交互和组件的生命周期。用到了jsdom来模拟浏览器环境</li>
+</ul>
+<p>三种方法中，shallow和mount因为返回的是DOM对象，可以用simulate进行交互模拟，而render方法不可以。一般shallow方法就可以满足需求，如果需要对子组件进行判断，需要使用render，如果需要测试组件的生命周期，需要使用mount方法。</p>
+<h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><p>simulate(event, mock)：模拟事件，用来触发事件，event为事件名称，mock为一个event object<br>instance()：返回组件的实例<br>find(selector)：根据选择器查找节点，selector可以是CSS中的选择器，或者是组件的构造函数，组件的display name等<br>at(index)：返回一个渲染过的对象<br>get(index)：返回一个react node，要测试它，需要重新渲染<br>contains(nodeOrNodes)：当前对象是否包含参数重点 node，参数类型为react对象或对象数组<br>text()：返回当前组件的文本内容<br>html()： 返回当前组件的HTML代码形式<br>props()：返回根组件的所有属性<br>prop(key)：返回根组件的指定属性<br>state()：返回根组件的状态<br>setState(nextState)：设置根组件的状态<br>setProps(nextProps)：设置根组件的属性</p>
+<h2 id="5-config-explain"><a href="#5-config-explain" class="headerlink" title="5. config explain"></a>5. config explain</h2><ul>
+<li>setupFilesAfterEnv：配置文件，在运行测试案例代码之前，Jest会先运行这里的配置文件来初始化指定的测试环境</li>
+<li>moduleFileExtensions：代表支持加载的文件名</li>
+<li>testPathIgnorePatterns：用正则来匹配不用测试的文件</li>
+<li>testRegex：正则表示的测试文件，测试文件的格式为xxx.test.js等</li>
+<li>collectCoverage：是否生成测试覆盖报告，如果开启，会增加测试的时间</li>
+<li>collectCoverageFrom：生成测试覆盖报告是检测的覆盖文件</li>
+<li>moduleNameMapper：代表需要被Mock的资源名称</li>
+<li>transform：用babel-jest来编译文件，生成ES6/7的语法， ts-jest编译typescript文件</li>
+</ul>
+<h2 id="6-jest对象"><a href="#6-jest对象" class="headerlink" title="6. jest对象"></a>6. jest对象</h2><ul>
+<li>jest.fn(implementation)：返回一个全新没有使用过的mock function，这个function在被调用的时候会记录很多和函数调用有关的信息</li>
+<li>jest.mock(moduleName, factory, options)：用来mock一些模块或者文件</li>
+<li>jest.spyOn(object, methodName)：返回一个mock function，和jest.fn相似，但是能够追踪object[methodName]的调用信息，类似Sinon</li>
+</ul>
+<h2 id="7-常见断言"><a href="#7-常见断言" class="headerlink" title="7. 常见断言"></a>7. 常见断言</h2><p>expect(value)：要测试一个值进行断言的时候，要使用expect对值进行包裹<br>toBe(value)：使用Object.is来进行比较，如果进行浮点数的比较，要使用toBeCloseTo<br>not：用来取反<br>toEqual(value)：用于对象的深比较<br>toMatch(regexpOrString)：用来检查字符串是否匹配，可以是正则表达式或者字符串<br>toContain(item)：用来判断item是否在一个数组中，也可以用于字符串的判断<br>toBeNull(value)：只匹配null<br>toBeUndefined(value)：只匹配undefined<br>toBeDefined(value)：与toBeUndefined相反<br>toBeTruthy(value)：匹配任何使if语句为真的值<br>toBeFalsy(value)：匹配任何使if语句为假的值<br>toBeGreaterThan(number)： 大于<br>toBeGreaterThanOrEqual(number)：大于等于<br>toBeLessThan(number)：小于<br>toBeLessThanOrEqual(number)：小于等于<br>toBeInstanceOf(class)：判断是不是class的实例<br>anything(value)：匹配除了null和undefined以外的所有值<br>resolves：用来取出promise为fulfilled时包裹的值，支持链式调用<br>rejects：用来取出promise为rejected时包裹的值，支持链式调用<br>toHaveBeenCalled()：用来判断mock function是否被调用过<br>toHaveBeenCalledTimes(number)：用来判断mock function被调用的次数<br>assertions(number)：验证在一个测试用例中有number个断言被调用<br>extend(matchers)：自定义一些断言</p>
+<h2 id="8-测试场景"><a href="#8-测试场景" class="headerlink" title="8. 测试场景"></a>8. 测试场景</h2><h4 id="对组件节点进行测试"><a href="#对组件节点进行测试" class="headerlink" title="对组件节点进行测试"></a>对组件节点进行测试</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">it(<span class="string">'should has Button'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; wrapper &#125; = setup();</span><br><span class="line">  expect(wrapper.find(<span class="string">'Button'</span>).length).toBe(<span class="number">2</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">it(<span class="string">'should render 2 item'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; wrapper &#125; = setupByRender();</span><br><span class="line">  expect(wrapper.find(<span class="string">'button'</span>).length).toBe(<span class="number">2</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">it(<span class="string">'should render item equal'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; wrapper &#125; = setupByMount();</span><br><span class="line">  wrapper.find(<span class="string">'.item-text'</span>).forEach(<span class="function">(<span class="params">node, index</span>) =&gt;</span> &#123;</span><br><span class="line">    expect(node.text()).toBe(wrapper.props().list[index])</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">it(<span class="string">'click item to be done'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; wrapper &#125; = setupByMount();</span><br><span class="line">  wrapper.find(<span class="string">'Button'</span>).at(<span class="number">0</span>).simulate(<span class="string">'click'</span>);</span><br><span class="line">  expect(props.deleteTodo).toBeCalled();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p>This creates a package.json file with default values.</p>
-<h2 id="2-Install-react-typescript-dependencies"><a href="#2-Install-react-typescript-dependencies" class="headerlink" title="2. Install react typescript dependencies"></a>2. Install react typescript dependencies</h2><p>First ensure Webpack is installed.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i webpack webpack-cli webpack-merge html-webpack-plugin webpack-dev-server -D</span><br></pre></td></tr></table></figure>
+<h4 id="使用-snapshot-进行-UI-测试"><a href="#使用-snapshot-进行-UI-测试" class="headerlink" title="使用 snapshot 进行 UI 测试"></a>使用 snapshot 进行 UI 测试</h4> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">it(<span class="string">'renders correctly'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> tree = renderer</span><br><span class="line">  .create(<span class="xml"><span class="tag">&lt;<span class="name">TodoList</span> &#123;<span class="attr">...props</span>&#125; /&gt;</span>)</span></span><br><span class="line"><span class="xml">          .toJSON();</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">  expect(tree).toMatchSnapshot();</span></span><br><span class="line"><span class="xml">&#125;);</span></span><br></pre></td></tr></table></figure>
 
-<p>Webpack is a tool that will bundle your code and optionally all of its dependencies into a single .js file.</p>
-<p>Let’s now add React and React-DOM, along with their declaration files, as dependencies to your package.json file:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i react react-dom </span><br><span class="line">npm i @types/react @types/react-dom -D</span><br></pre></td></tr></table></figure>
+<h4 id="测试组件的内部函数"><a href="#测试组件的内部函数" class="headerlink" title="测试组件的内部函数"></a>测试组件的内部函数</h4> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">it(<span class="string">'calls component handleTest'</span>, () =&gt; &#123; <span class="comment">// class中使用箭头函数来定义方法</span></span><br><span class="line">  <span class="keyword">const</span> &#123; wrapper &#125; = setup();</span><br><span class="line">  <span class="keyword">const</span> spyFunction = jest.spyOn(wrapper.instance(), <span class="string">'handleTest'</span>);</span><br><span class="line">  wrapper.instance().handleTest();</span><br><span class="line">  expect(spyFunction).toHaveBeenCalled();</span><br><span class="line">  spyFunction.mockRestore();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">it(<span class="string">'calls component handleTest2'</span>, () =&gt; &#123; <span class="comment">//在constructor使用bind来定义方法</span></span><br><span class="line">  <span class="keyword">const</span> spyFunction = jest.spyOn(TodoList.prototype, <span class="string">'handleTest2'</span>);</span><br><span class="line">  <span class="keyword">const</span> &#123; wrapper &#125; = setup();</span><br><span class="line">  wrapper.instance().handleTest2();</span><br><span class="line">  expect(spyFunction).toHaveBeenCalled();</span><br><span class="line">  spyFunction.mockRestore();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p>That @types/ prefix means that we also want to get the declaration files for React and React-DOM. Usually when you import a path like “react”, it will look inside of the react package itself; however, not all packages include declaration files, so TypeScript also looks in the @types/react package as well. You’ll see that we won’t even have to think about this later on.</p>
-<p>Next, we’ll add development-time dependencies on the ts-loader and source-map-loader.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i typescript ts-loader <span class="built_in">source</span>-map-loader -D</span><br><span class="line">or</span><br><span class="line">npm i awesome-typescript-loader <span class="built_in">source</span>-map-loader -D</span><br></pre></td></tr></table></figure>
-
-<p>Both of these dependencies will let TypeScript and webpack play well together. ts-loader helps Webpack compile your TypeScript code using the TypeScript’s standard configuration file named tsconfig.json. source-map-loader uses any sourcemap outputs from TypeScript to inform webpack when generating its own sourcemaps. This will allow you to debug your final output file as if you were debugging your original TypeScript source code.</p>
-<p>Please note that ts-loader is not the only loader for typescript. You could instead use <a href="https://www.npmjs.com/package/awesome-typescript-loader" target="_blank" rel="noopener">awesome-typescript-loader</a><br>Read about the differences between them:<br><a href="https://github.com/s-panferov/awesome-typescript-loader#differences-between-ts-loader" target="_blank" rel="noopener">https://github.com/s-panferov/awesome-typescript-loader#differences-between-ts-loader</a><br>Notice that we installed TypeScript as a development dependency. We could also have linked TypeScript to a global copy with npm link typescript, but this is a less common scenario.</p>
-<h2 id="3-Install-jest-enzyme-dependencies"><a href="#3-Install-jest-enzyme-dependencies" class="headerlink" title="3. Install jest enzyme dependencies"></a>3. Install jest enzyme dependencies</h2><p>1、install jest dependencies</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i jest @types/jest ts-jest -D</span><br></pre></td></tr></table></figure>
-
-<p>2、 install enzyme dependencies</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i enzyme enzyme-adapter-react-16 jest-enzyme  enzyme-to-json -D</span><br><span class="line">npm i @types/enzyme @types/enzyme-adapter-react-16 -D</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-install-another-compiler-for-typescript-use-babel-dependencies"><a href="#4-install-another-compiler-for-typescript-use-babel-dependencies" class="headerlink" title="4. install another compiler for typescript use babel dependencies"></a>4. install another compiler for typescript use babel dependencies</h2><p>install babel loader</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript -D</span><br><span class="line"></span><br><span class="line">npm i babel-loader babel-plugin-import -D</span><br></pre></td></tr></table></figure>
-
-<p>config babel</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports=&#123;</span><br><span class="line">    presets: [</span><br><span class="line">        <span class="string">"env"</span>,</span><br><span class="line">        <span class="string">"react"</span>,</span><br><span class="line">        <span class="string">"typascript"</span></span><br><span class="line">    ],</span><br><span class="line">    plugins: [</span><br><span class="line">        [<span class="string">"lodash"</span>],</span><br><span class="line">        [<span class="string">"import"</span>, &#123;<span class="attr">libraryName</span>: <span class="string">"antd"</span>, <span class="attr">style</span>: <span class="literal">true</span>&#125;]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>use babel loader instaed of ts-loader</p>
 
     </div>
 </article>
@@ -433,7 +450,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/07/react typescript jest config (二)/">react typescript jest config (二)</a>
+                    <a href="/2019/08/10/webpack common config/">webpack 4.x common config</a>
                 </span>
             </li>
             
@@ -466,17 +483,17 @@
 
                 
                 <li>
-                    <a href="/2019/08/06/react typescript jest config (一)/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2019/08/09/unit test for react/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2019/08/06/react typescript jest config (一)/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2019/08/09/unit test for react/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2019/08/06/react typescript jest config (一)/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2019/08/09/unit test for react/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -484,19 +501,19 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/jest/" style="font-size: 9.718888925981176px;" class="tag-cloud-link">jest</a>
+    <a href="/tags/jest/" style="font-size: 13.049434759544264px;" class="tag-cloud-link">jest</a>
     
-    <a href="/tags/typescript/" style="font-size: 16.740975770925346px;" class="tag-cloud-link">typescript</a>
+    <a href="/tags/typescript/" style="font-size: 19.29462251152156px;" class="tag-cloud-link">typescript</a>
     
-    <a href="/tags/javascript/" style="font-size: 16.94750759507722px;" class="tag-cloud-link">javascript</a>
+    <a href="/tags/javascript/" style="font-size: 19.56452432955707px;" class="tag-cloud-link">javascript</a>
     
-    <a href="/tags/react-hooks/" style="font-size: 17.369467898228315px;" class="tag-cloud-link">react hooks</a>
+    <a href="/tags/react-hooks/" style="font-size: 15.413284653511457px;" class="tag-cloud-link">react hooks</a>
     
-    <a href="/tags/react/" style="font-size: 14.066204911322576px;" class="tag-cloud-link">react</a>
+    <a href="/tags/react/" style="font-size: 12.439934916364276px;" class="tag-cloud-link">react</a>
     
-    <a href="/tags/enzyme/" style="font-size: 11.795975869694143px;" class="tag-cloud-link">enzyme</a>
+    <a href="/tags/enzyme/" style="font-size: 15.396641042219219px;" class="tag-cloud-link">enzyme</a>
     
-    <a href="/tags/webpack/" style="font-size: 9.78226436171497px;" class="tag-cloud-link">webpack</a>
+    <a href="/tags/webpack/" style="font-size: 16.364317428467366px;" class="tag-cloud-link">webpack</a>
     
 </div>
                 

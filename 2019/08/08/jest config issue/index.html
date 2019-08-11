@@ -12,7 +12,7 @@
     
     
     
-    <title>react typescript jest config (二) | sym blog</title>
+    <title>jest config issue assets &amp;&amp; alias | sym blog</title>
     <link href="”https://nyanshen.github.io“" rel="”prefetch”">
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -170,13 +170,13 @@
         <i class="fa fa-home"></i>
         <a href="https://nyanshen.github.io">sym blog</a>
         >
-        <span>react typescript jest config (二)</span>
+        <span>jest config issue assets &amp;&amp; alias</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2019/08/08/jest config issue/">react typescript jest config (二)</a>
+                <a href="/2019/08/08/jest config issue/">jest config issue assets &amp;&amp; alias</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -201,7 +201,7 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2019/08/08/jest config issue/">react typescript jest config (二)</a>
+                    <a href="/2019/08/08/jest config issue/">jest config issue assets &amp;&amp; alias</a>
                 </h4>
             </div>
             <p>
@@ -226,8 +226,8 @@
 <h2 id="2-sample-here"><a href="#2-sample-here" class="headerlink" title="2. sample here"></a>2. sample here</h2><p>With the below config in your tsconfig:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="string">"paths"</span>: &#123;</span><br><span class="line">      <span class="string">"@App/*"</span>: [<span class="string">"src/*"</span>],</span><br><span class="line">      <span class="string">"common/*"</span>: [<span class="string">"common/*"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// jest.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">// [...]</span></span><br><span class="line">  moduleNameMapper: &#123;</span><br><span class="line">    <span class="string">'^@App/(.*)$'</span>: <span class="string">'&lt;rootDir&gt;/src/$1'</span>,</span><br><span class="line">    <span class="string">'^common/(.*)$'</span>: <span class="string">'&lt;rootDir&gt;/common/$1'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-import-css-scss-less-issue"><a href="#3-import-css-scss-less-issue" class="headerlink" title="3. import css|scss|less issue"></a>3. import css|scss|less issue</h2><p>use jest-css-modules-transform</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"transform"</span>: &#123;</span><br><span class="line">  <span class="string">".+\\.(css|styl|less|sass|scss)$"</span>: <span class="string">"&lt;rootDir&gt;/node_modules/jest-css-modules-transform"</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="3-Handling-Static-Assets"><a href="#3-Handling-Static-Assets" class="headerlink" title="3. Handling Static Assets"></a>3. Handling Static Assets</h2><p>Next, let’s configure Jest to gracefully handle asset files such as stylesheets and images. Usually, these files aren’t particularly useful in tests so we can safely mock them out. However, if you are using CSS Modules then it’s better to mock a proxy for your className lookups.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"moduleNameMapper"</span>: &#123;</span><br><span class="line">      <span class="string">"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$"</span>: <span class="string">"&lt;rootDir&gt;/__mocks__/fileMock.js"</span>,</span><br><span class="line">      <span class="string">"\\.(css|less)$"</span>: <span class="string">"&lt;rootDir&gt;/__mocks__/styleMock.js"</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// __mocks__/styleMock.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// __mocks__/fileMock.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="string">'test-file-stub'</span>;</span><br></pre></td></tr></table></figure>
     </div>
 </article>
 
@@ -289,7 +289,25 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/08/jest config issue/">react typescript jest config (二)</a>
+                    <a href="/2019/08/10/webpack common config/">webpack 4.x common config</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/10/react hooks testing/">testing reack hooks</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/09/unit test for react/">jest enzyme unit test react</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/08/jest config issue/">jest config issue assets &amp;&amp; alias</a>
                 </span>
             </li>
             
@@ -329,12 +347,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/08/01/js-variables/">Javasript Variables</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -359,7 +371,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/08/jest config issue/">react typescript jest config (二)</a>
+                    <a href="/2019/08/08/jest config issue/">jest config issue assets &amp;&amp; alias</a>
                 </span>
             </li>
             
@@ -377,6 +389,12 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2019/08/10/react hooks testing/">testing reack hooks</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2019/08/06/react typescript jest config (一)/">react typescript jest config (一)</a>
                 </span>
             </li>
@@ -384,6 +402,12 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2019/08/07/react typescript jest config (二)/">react typescript jest config (二)</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/10/webpack common config/">webpack 4.x common config</a>
                 </span>
             </li>
             
@@ -428,15 +452,19 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/jest/" style="font-size: 17.10820559823995px;" class="tag-cloud-link">jest</a>
+    <a href="/tags/jest/" style="font-size: 10.53700514964348px;" class="tag-cloud-link">jest</a>
     
-    <a href="/tags/typescript/" style="font-size: 8.650753741091826px;" class="tag-cloud-link">typescript</a>
+    <a href="/tags/typescript/" style="font-size: 12.910751066407236px;" class="tag-cloud-link">typescript</a>
     
-    <a href="/tags/javascript/" style="font-size: 19.408072378379053px;" class="tag-cloud-link">javascript</a>
+    <a href="/tags/javascript/" style="font-size: 19.47843373417215px;" class="tag-cloud-link">javascript</a>
     
-    <a href="/tags/react/" style="font-size: 13.132880407603587px;" class="tag-cloud-link">react</a>
+    <a href="/tags/react-hooks/" style="font-size: 17.16085998512393px;" class="tag-cloud-link">react hooks</a>
     
-    <a href="/tags/enzyme/" style="font-size: 15.950717419364494px;" class="tag-cloud-link">enzyme</a>
+    <a href="/tags/react/" style="font-size: 9.837779745288628px;" class="tag-cloud-link">react</a>
+    
+    <a href="/tags/enzyme/" style="font-size: 8.16658359375862px;" class="tag-cloud-link">enzyme</a>
+    
+    <a href="/tags/webpack/" style="font-size: 15.424031636947433px;" class="tag-cloud-link">webpack</a>
     
 </div>
                 
