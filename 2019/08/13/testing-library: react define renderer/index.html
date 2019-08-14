@@ -12,7 +12,7 @@
     
     
     
-    <title>archive_a | sym blog</title>
+    <title>testing-library/react define renderer like renderwithRouter, renderWithRedux | sym blog</title>
     <link href="”https://nyanshen.github.io“" rel="”prefetch”">
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -97,7 +97,7 @@
                 
                 
                 
-                <li class="current">
+                <li class="">
                     <a href="/archives">
                         <i class="fa fa-archive"></i>archive
                     </a>
@@ -164,19 +164,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-archive">
+                    
+<article class="article well article-body" id="article">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="https://nyanshen.github.io">sym blog</a>
         >
-        <span>归档</span>
+        <span>testing-library/react define renderer like renderwithRouter, renderWithRedux</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/archives">归档</a>
+                <a href="/2019/08/13/testing-library: react define renderer/">testing-library/react define renderer like renderwithRouter, renderWithRedux</a>
             </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/jest/">jest</a>, 
+                
+                <a href="/tags/react-hooks/">react hooks</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2019-08-13
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -184,79 +201,35 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/archives">归档</a>
+                    <a href="/2019/08/13/testing-library: react define renderer/">testing-library/react define renderer like renderwithRouter, renderWithRedux</a>
                 </h4>
             </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2019-08-13
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/jest/">jest</a>, 
+                
+                <a href="/tags/react-hooks/">react hooks</a>
+                
+                
+                
+            </p>
         </center>
     </div>
-    <div class="content-article" style="margin-top: 30px;">
-        
-        
-            <h1 style="font-size: 24px; margin-top: 40px;">2019年</h1>
-            
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-             
-             
-                        <a href="/2019/08/14/jest mock axios complex implement/">jest mock axios complex implement</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/13/testing-library: react define renderer/">testing-library/react define renderer like renderwithRouter, renderWithRedux</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/11/testing library: jest-dom config issue/">testing-library/jest-dom config issue</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/10/webpack common config/">webpack 4.x common config</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/10/react hooks testing/">testing reack hooks</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/09/unit test for react/">jest enzyme unit test react</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/08/jest config issue/">jest config issue assets &amp;&amp; alias</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/07/react typescript jest config (二)/">react typescript jest config (二)</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/06/react typescript jest config (一)/">react typescript jest config (一)</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/04/jest test todo list/">jest test todo list</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/03/Jest Setup and Teardown/">Jest Setup and Teardown</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/02/jest-异步代码测试方法/">jest-异步代码测试方法</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/01/es6-新特性/">es6 新特性</a>
-                        <br>
-            
-             
-                        <a href="/2019/08/01/js-variables/">Javasript Variables</a>
-                        <br>
-            
-                    </div>
-        
+    <div class="content-article">
+        <h2 id="1-mock-renderWithRouter"><a href="#1-mock-renderWithRouter" class="headerlink" title="1. mock renderWithRouter"></a>1. mock renderWithRouter</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// this is a handy function that I would utilize for any component</span></span><br><span class="line"><span class="comment">// that relies on the router being in context</span></span><br><span class="line"><span class="keyword">const</span> renderWithRouter = (</span><br><span class="line">  ui,</span><br><span class="line">  &#123;route = <span class="string">'/'</span>, history = createMemoryHistory(&#123;<span class="attr">initialEntries</span>: [route]&#125;)&#125; = &#123;&#125;,</span><br><span class="line">)  =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    ...render(&lt;Router history=&#123;history&#125;&gt;&#123;ui&#125;&lt;/Router&gt;),</span><br><span class="line">    <span class="comment">// adding `history` to the returned utilities to allow us</span></span><br><span class="line">    <span class="comment">// to reference it in our tests (just try to avoid using</span></span><br><span class="line">    <span class="comment">// this to test implementation details).</span></span><br><span class="line">    history,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> defalut renderWithRouter</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-relative-test"><a href="#2-relative-test" class="headerlink" title="2. relative test"></a>2. relative test</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> &#123;withRouter&#125; <span class="keyword">from</span> <span class="string">'react-router'</span></span><br><span class="line"><span class="keyword">import</span> &#123;Link, Route, Router, Switch&#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span></span><br><span class="line"><span class="keyword">import</span> &#123;createMemoryHistory&#125; <span class="keyword">from</span> <span class="string">'history'</span></span><br><span class="line"><span class="keyword">import</span> &#123;render, fireEvent&#125; <span class="keyword">from</span> <span class="string">'@testing-library/react'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> About = <span class="function"><span class="params">()</span> =&gt;</span> &lt;div&gt;You are on the about page&lt;/div&gt;</span><br><span class="line"><span class="keyword">const</span> Home = <span class="function"><span class="params">()</span> =&gt;</span> &lt;div&gt;You are home&lt;/div&gt;</span><br><span class="line"><span class="keyword">const</span> NoMatch = <span class="function"><span class="params">()</span> =&gt;</span> &lt;div&gt;No match&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> LocationDisplay = withRouter(<span class="function">(<span class="params">&#123;location&#125;</span>) =&gt;</span> (</span><br><span class="line">  &lt;div data-testid=<span class="string">"location-display"</span>&gt;&#123;location.pathname&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">))</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function App() &#123;</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Link to="/</span><span class="string">"&gt;Home&lt;/Link&gt;</span></span><br><span class="line"><span class="string">      &lt;Link to="</span>/about<span class="string">"&gt;About&lt;/Link&gt;</span></span><br><span class="line"><span class="string">      &lt;Switch&gt;</span></span><br><span class="line"><span class="string">        &lt;Route exact path="</span>/<span class="string">" component=&#123;Home&#125; /&gt;</span></span><br><span class="line"><span class="string">        &lt;Route path="</span>/about<span class="string">" component=&#123;About&#125; /&gt;</span></span><br><span class="line"><span class="string">        &lt;Route component=&#123;NoMatch&#125; /&gt;</span></span><br><span class="line"><span class="string">      &lt;/Switch&gt;</span></span><br><span class="line"><span class="string">      &lt;LocationDisplay /&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  )</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// Ok, so here's what your tests might look like</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// this is a handy function that I would utilize for any component</span></span><br><span class="line"><span class="string">// that relies on the router being in context</span></span><br><span class="line"><span class="string">function renderWithRouter(</span></span><br><span class="line"><span class="string">  ui,</span></span><br><span class="line"><span class="string">  &#123;route = '/', history = createMemoryHistory(&#123;initialEntries: [route]&#125;)&#125; = &#123;&#125;,</span></span><br><span class="line"><span class="string">) &#123;</span></span><br><span class="line"><span class="string">  return &#123;</span></span><br><span class="line"><span class="string">    ...render(&lt;Router history=&#123;history&#125;&gt;&#123;ui&#125;&lt;/Router&gt;),</span></span><br><span class="line"><span class="string">    // adding `history` to the returned utilities to allow us</span></span><br><span class="line"><span class="string">    // to reference it in our tests (just try to avoid using</span></span><br><span class="line"><span class="string">    // this to test implementation details).</span></span><br><span class="line"><span class="string">    history,</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">test('full app rendering/navigating', () =&gt; &#123;</span></span><br><span class="line"><span class="string">  const &#123;container, getByText&#125; = renderWithRouter(&lt;App /&gt;)</span></span><br><span class="line"><span class="string">  // normally I'd use a data-testid, but just wanted to show this is also possible</span></span><br><span class="line"><span class="string">  expect(container.innerHTML).toMatch('You are home')</span></span><br><span class="line"><span class="string">  const leftClick = &#123;button: 0&#125;</span></span><br><span class="line"><span class="string">  fireEvent.click(getByText(/about/i), leftClick)</span></span><br><span class="line"><span class="string">  // normally I'd use a data-testid, but just wanted to show this is also possible</span></span><br><span class="line"><span class="string">  expect(container.innerHTML).toMatch('You are on the about page')</span></span><br><span class="line"><span class="string">&#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">test('landing on a bad page', () =&gt; &#123;</span></span><br><span class="line"><span class="string">  const &#123;container&#125; = renderWithRouter(&lt;App /&gt;, &#123;</span></span><br><span class="line"><span class="string">    route: '/something-that-does-not-match',</span></span><br><span class="line"><span class="string">  &#125;)</span></span><br><span class="line"><span class="string">  // normally I'd use a data-testid, but just wanted to show this is also possible</span></span><br><span class="line"><span class="string">  expect(container.innerHTML).toMatch('No match')</span></span><br><span class="line"><span class="string">&#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">test('rendering a component that uses withRouter', () =&gt; &#123;</span></span><br><span class="line"><span class="string">  const route = '/some-route'</span></span><br><span class="line"><span class="string">  const &#123;getByTestId&#125; = renderWithRouter(&lt;LocationDisplay /&gt;, &#123;route&#125;)</span></span><br><span class="line"><span class="string">  expect(getByTestId('location-display').textContent).toBe(route)</span></span><br><span class="line"><span class="string">&#125;)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-render-with-redux"><a href="#3-render-with-redux" class="headerlink" title="3. render with redux"></a>3. render with redux</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> renderWithRedux = <span class="function">(<span class="params">ui, &#123; initialState, store = createStore(reducer, initialState</span>), &#125; = &#123;&#125;) =&gt;</span> (&#123;</span><br><span class="line">  ...render(&lt;Provider store=&#123;store&#125;&gt;&#123;ui&#125;&lt;/Provider&gt;),</span><br><span class="line">  store,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
     </div>
 </article>
+
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -390,19 +363,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/03/Jest Setup and Teardown/">Jest Setup and Teardown</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2019/08/08/jest config issue/">jest config issue assets &amp;&amp; alias</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/02/jest-异步代码测试方法/">jest-异步代码测试方法</a>
+                    <a href="/2019/08/14/jest mock axios complex implement/">jest mock axios complex implement</a>
                 </span>
             </li>
             
@@ -426,6 +393,12 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2019/08/01/js-variables/">Javasript Variables</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2019/08/07/react typescript jest config (二)/">react typescript jest config (二)</a>
                 </span>
             </li>
@@ -438,13 +411,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/04/jest test todo list/">jest test todo list</a>
+                    <a href="/2019/08/10/webpack common config/">webpack 4.x common config</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/09/unit test for react/">jest enzyme unit test react</a>
+                    <a href="/2019/08/04/jest test todo list/">jest test todo list</a>
                 </span>
             </li>
             
@@ -459,17 +432,17 @@
 
                 
                 <li>
-                    <a href="/archives/2019/08/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2019/08/13/testing-library: react define renderer/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/archives/2019/08/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2019/08/13/testing-library: react define renderer/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/archives/2019/08/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2019/08/13/testing-library: react define renderer/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -477,21 +450,21 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/jest/" style="font-size: 13.142876162417487px;" class="tag-cloud-link">jest</a>
+    <a href="/tags/jest/" style="font-size: 8.023207280568423px;" class="tag-cloud-link">jest</a>
     
-    <a href="/tags/typescript/" style="font-size: 10.03993935664815px;" class="tag-cloud-link">typescript</a>
+    <a href="/tags/typescript/" style="font-size: 9.046178183291897px;" class="tag-cloud-link">typescript</a>
     
-    <a href="/tags/axios/" style="font-size: 19.59835426533635px;" class="tag-cloud-link">axios</a>
+    <a href="/tags/axios/" style="font-size: 16.556390353801426px;" class="tag-cloud-link">axios</a>
     
-    <a href="/tags/react-hooks/" style="font-size: 17.459064032615355px;" class="tag-cloud-link">react hooks</a>
+    <a href="/tags/react-hooks/" style="font-size: 11.010641753066949px;" class="tag-cloud-link">react hooks</a>
     
-    <a href="/tags/javascript/" style="font-size: 13.70578478060899px;" class="tag-cloud-link">javascript</a>
+    <a href="/tags/javascript/" style="font-size: 11.62381564962536px;" class="tag-cloud-link">javascript</a>
     
-    <a href="/tags/react/" style="font-size: 12.425792604064583px;" class="tag-cloud-link">react</a>
+    <a href="/tags/react/" style="font-size: 11.882454989160337px;" class="tag-cloud-link">react</a>
     
-    <a href="/tags/enzyme/" style="font-size: 15.277014309170529px;" class="tag-cloud-link">enzyme</a>
+    <a href="/tags/enzyme/" style="font-size: 10.926654307299637px;" class="tag-cloud-link">enzyme</a>
     
-    <a href="/tags/webpack/" style="font-size: 8.229491783804527px;" class="tag-cloud-link">webpack</a>
+    <a href="/tags/webpack/" style="font-size: 9.189110034687992px;" class="tag-cloud-link">webpack</a>
     
 </div>
                 

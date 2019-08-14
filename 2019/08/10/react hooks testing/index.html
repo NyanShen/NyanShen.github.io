@@ -134,7 +134,7 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/javascript/">javascript</a>
+                            <a href="/tags/axios/">axios</a>
                         </li>
                         
                         
@@ -236,7 +236,7 @@
 <h2 id="4-configuring-some-import"><a href="#4-configuring-some-import" class="headerlink" title="4. configuring some import"></a>4. configuring some import</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'@testing-library/react/cleanup-after-each'</span> <span class="comment">// deprecated</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'@testing-library/jest-dom/extend-expect'</span> <span class="comment">// not work in jest config file when use typescript</span></span><br></pre></td></tr></table></figure>
 
 <p>these imports are something you’d normally configure Jest to import for you.<br>automatically. Learn more in the setup docs: <a href="https://testing-library.com/docs/react-testing-library/setup#cleanup" target="_blank" rel="noopener">https://testing-library.com/docs/react-testing-library/setup#cleanup</a></p>
-<h2 id="sample-test-Header"><a href="#sample-test-Header" class="headerlink" title="sample test Header"></a>sample test Header</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;useState&#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Header = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> [value, setValue] = useState&lt;string&gt;(<span class="string">""</span>);</span><br><span class="line">    <span class="keyword">const</span> handleInputChange = <span class="function">(<span class="params">event: React.ChangeEvent&lt;HTMLInputElement&gt;</span>) =&gt;</span> &#123;</span><br><span class="line">        setValue(event.target.value)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"header"</span>&gt;</span><br><span class="line">            &lt;div className=<span class="string">"header-content"</span>&gt;</span><br><span class="line">                TodoList</span><br><span class="line">                &lt;input </span><br><span class="line">                value=&#123;value&#125;</span><br><span class="line">                data-testid=<span class="string">"header_input"</span></span><br><span class="line">                onChange=&#123;handleInputChange&#125;</span><br><span class="line">                /&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Header;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Header.test.tsx</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; render, fireEvent &#125; <span class="keyword">from</span> <span class="string">"@testing-library/react"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"@testing-library/jest-dom/extend-expect"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Header <span class="keyword">from</span> <span class="string">"../Header"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> wrapper = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">describe(<span class="string">"test Header component"</span>, () =&gt; &#123;</span><br><span class="line">    beforeEach(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        wrapper = render(<span class="xml"><span class="tag">&lt;<span class="name">Header</span> /&gt;</span>);</span></span><br><span class="line"><span class="xml">    &#125;)</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">    it("should contain title 'TodoList'", () =&gt; &#123; </span></span><br><span class="line"><span class="xml">        const &#123;getByText&#125; = wrapper;</span></span><br><span class="line"><span class="xml">        const title = "TodoList";</span></span><br><span class="line"><span class="xml">        expect(getByText(title)).toBeInTheDocument();</span></span><br><span class="line"><span class="xml">    &#125;)</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">    it("input initial value should be empty", () =&gt; &#123; </span></span><br><span class="line"><span class="xml">        const &#123;getByTestId&#125; = wrapper;</span></span><br><span class="line"><span class="xml">        expect(getByTestId("header_input").value).toEqual("");</span></span><br><span class="line"><span class="xml">    &#125;)</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">    it("value should be set when input some text", () =&gt; &#123;</span></span><br><span class="line"><span class="xml">        const &#123;getByTestId&#125; = wrapper;</span></span><br><span class="line"><span class="xml">        const inputElem = getByTestId("header_input");</span></span><br><span class="line"><span class="xml">        const context = "input text test";</span></span><br><span class="line"><span class="xml">        fireEvent.change(inputElem, &#123;target: &#123;</span></span><br><span class="line"><span class="xml">            value: context</span></span><br><span class="line"><span class="xml">        &#125;&#125;);</span></span><br><span class="line"><span class="xml">        expect(inputElem.value).toEqual(context);</span></span><br><span class="line"><span class="xml">    &#125;)</span></span><br><span class="line"><span class="xml">&#125;)</span></span><br></pre></td></tr></table></figure>
+<h2 id="sample-test-Header"><a href="#sample-test-Header" class="headerlink" title="sample test Header"></a>sample test Header</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;useState&#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Header = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> [value, setValue] = useState&lt;string&gt;(<span class="string">""</span>);</span><br><span class="line">    <span class="keyword">const</span> handleInputChange = <span class="function">(<span class="params">event: React.ChangeEvent&lt;HTMLInputElement&gt;</span>) =&gt;</span> &#123;</span><br><span class="line">        setValue(event.target.value)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"header"</span>&gt;</span><br><span class="line">            &lt;div className=<span class="string">"header-content"</span>&gt;</span><br><span class="line">                TodoList</span><br><span class="line">                &lt;input </span><br><span class="line">                value=&#123;value&#125;</span><br><span class="line">                data-testid=<span class="string">"header_input"</span></span><br><span class="line">                onChange=&#123;handleInputChange&#125;</span><br><span class="line">                /&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Header;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Header.test.tsx</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; render, fireEvent &#125; <span class="keyword">from</span> <span class="string">"@testing-library/react"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"@testing-library/jest-dom/extend-expect"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Header <span class="keyword">from</span> <span class="string">"../Header"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> wrapper = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">describe(<span class="string">"test Header component"</span>, () =&gt; &#123;</span><br><span class="line">    beforeEach(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        wrapper = render(&lt;Header /&gt;);</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    it("should contain title 'TodoList'", () =&gt; &#123; </span><br><span class="line">        const &#123;getByText&#125; = wrapper;</span><br><span class="line">        const title = "TodoList";</span><br><span class="line">        expect(getByText(title)).toBeInTheDocument();</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    it("input initial value should be empty", () =&gt; &#123; </span><br><span class="line">        const &#123;getByTestId&#125; = wrapper;</span><br><span class="line">        expect(getByTestId("header_input").value).toEqual("");</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    it("value should be set when input some text", () =&gt; &#123;</span><br><span class="line">        const &#123;getByTestId&#125; = wrapper;</span><br><span class="line">        const inputElem = getByTestId("header_input");</span><br><span class="line">        const context = "input text test";</span><br><span class="line">        fireEvent.change(inputElem, &#123;target: &#123;</span><br><span class="line">            value: context</span><br><span class="line">        &#125;&#125;);</span><br><span class="line">        expect(inputElem.value).toEqual(context);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
     </div>
 </article>
 
@@ -298,6 +298,18 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2019/08/14/jest mock axios complex implement/">jest mock axios complex implement</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/13/testing-library: react define renderer/">testing-library/react define renderer like renderwithRouter, renderWithRedux</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2019/08/11/testing library: jest-dom config issue/">testing-library/jest-dom config issue</a>
                 </span>
             </li>
@@ -344,18 +356,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/08/03/Jest Setup and Teardown/">Jest Setup and Teardown</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/08/02/jest-异步代码测试方法/">jest-异步代码测试方法</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -380,19 +380,31 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2019/08/08/jest config issue/">jest config issue assets &amp;&amp; alias</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2019/08/02/jest-异步代码测试方法/">jest-异步代码测试方法</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/01/js-variables/">Javasript Variables</a>
+                    <a href="/2019/08/10/react hooks testing/">testing reack hooks</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/10/react hooks testing/">testing reack hooks</a>
+                    <a href="/2019/08/13/testing-library: react define renderer/">testing-library/react define renderer like renderwithRouter, renderWithRedux</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/01/js-variables/">Javasript Variables</a>
                 </span>
             </li>
             
@@ -410,25 +422,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/11/testing library: jest-dom config issue/">testing-library/jest-dom config issue</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/08/01/es6-新特性/">es6 新特性</a>
+                    <a href="/2019/08/04/jest test todo list/">jest test todo list</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2019/08/09/unit test for react/">jest enzyme unit test react</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/08/04/jest test todo list/">jest test todo list</a>
                 </span>
             </li>
             
@@ -461,19 +461,21 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/jest/" style="font-size: 11.925986213297412px;" class="tag-cloud-link">jest</a>
+    <a href="/tags/jest/" style="font-size: 13.272468151273493px;" class="tag-cloud-link">jest</a>
     
-    <a href="/tags/typescript/" style="font-size: 19.07290760568889px;" class="tag-cloud-link">typescript</a>
+    <a href="/tags/typescript/" style="font-size: 9.088466789884208px;" class="tag-cloud-link">typescript</a>
     
-    <a href="/tags/javascript/" style="font-size: 8.751695707890402px;" class="tag-cloud-link">javascript</a>
+    <a href="/tags/axios/" style="font-size: 11.045637920714682px;" class="tag-cloud-link">axios</a>
     
-    <a href="/tags/react-hooks/" style="font-size: 19.26667160840963px;" class="tag-cloud-link">react hooks</a>
+    <a href="/tags/react-hooks/" style="font-size: 11.138407523591752px;" class="tag-cloud-link">react hooks</a>
     
-    <a href="/tags/react/" style="font-size: 16.074845746781925px;" class="tag-cloud-link">react</a>
+    <a href="/tags/javascript/" style="font-size: 8.000353274551005px;" class="tag-cloud-link">javascript</a>
     
-    <a href="/tags/enzyme/" style="font-size: 19.368639692371865px;" class="tag-cloud-link">enzyme</a>
+    <a href="/tags/react/" style="font-size: 15.005180554976711px;" class="tag-cloud-link">react</a>
     
-    <a href="/tags/webpack/" style="font-size: 11.156905655274747px;" class="tag-cloud-link">webpack</a>
+    <a href="/tags/enzyme/" style="font-size: 9.787616508445899px;" class="tag-cloud-link">enzyme</a>
+    
+    <a href="/tags/webpack/" style="font-size: 15.503696645137445px;" class="tag-cloud-link">webpack</a>
     
 </div>
                 
