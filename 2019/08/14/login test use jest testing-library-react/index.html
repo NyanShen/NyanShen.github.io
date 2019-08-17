@@ -12,7 +12,7 @@
     
     
     
-    <title>categories | sym blog</title>
+    <title>jest mock axios complex implement | sym blog</title>
     <link href="”https://nyanshen.github.io“" rel="”prefetch”">
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -106,7 +106,7 @@
                 
                 
                 
-                <li class="current">
+                <li class="">
                     <a href="/categories">
                         <i class="fa fa-list"></i>categories
                     </a>
@@ -164,19 +164,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-categories">
+                    
+<article class="article well article-body" id="article">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="https://nyanshen.github.io">sym blog</a>
         >
-        <span>目录</span>
+        <span>jest mock axios complex implement</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/categories">目录集合</a>
+                <a href="/2019/08/14/login test use jest testing-library-react/">jest mock axios complex implement</a>
             </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/jest/">jest</a>, 
+                
+                <a href="/tags/testing-library-react/">testing-library-react</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2019-08-14
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -184,20 +201,37 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/categories">目录集合</a>
+                    <a href="/2019/08/14/login test use jest testing-library-react/">jest mock axios complex implement</a>
                 </h4>
             </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2019-08-14
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/jest/">jest</a>, 
+                
+                <a href="/tags/testing-library-react/">testing-library-react</a>
+                
+                
+                
+            </p>
         </center>
     </div>
-    <div class="content-article" style="margin-top: 30px;">
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-            
-            暂无目录
-            
-        </div>
+    <div class="content-article">
+        <h2 id="1-登录页面场景"><a href="#1-登录页面场景" class="headerlink" title="1. 登录页面场景"></a>1. 登录页面场景</h2><ul>
+<li>进入登录页面时，获取验证码，接口返回一个imageId和content。</li>
+<li>用户输入登录名，密码，和验证码。</li>
+<li>用户点击登录，调用验证码是否正确接口，返回imageVerification为true时，说明验证码填写正确。</li>
+<li>然后请求获取token接口，返回用户信息和其他相关信息，将返回信息存入localstorage.</li>
+</ul>
+<h2 id="2-集成测试"><a href="#2-集成测试" class="headerlink" title="2. 集成测试"></a>2. 集成测试</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;simpleLocalStorage&#125; <span class="keyword">from</span> <span class="string">"simple-storage"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;act, fireEvent&#125; <span class="keyword">from</span> <span class="string">"@testing-library/react"</span>;</span><br><span class="line">it(<span class="string">"currentUser should be in the localStorage when login success"</span>, () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> container = RenderWithRouter(<span class="xml"><span class="tag">&lt;<span class="name">Login</span> /&gt;</span>);</span></span><br><span class="line"><span class="xml">    // some same code ignore</span></span><br><span class="line"><span class="xml">    const usernameElem: HTMLInputElemnt = container.querySelector("#username");</span></span><br><span class="line"><span class="xml">    const passwordElem = getByPlaceholderText(/password/i) as HTMLInputElemnt;</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">    await act(async () =&gt; &#123;</span></span><br><span class="line"><span class="xml">        fireEvent.change(usernameElem,&#123;target: &#123;value: username&#125;&#125;);</span></span><br><span class="line"><span class="xml">    &#125;)</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">    process.nextTick(() =&gt; &#123;</span></span><br><span class="line"><span class="xml">        fireEvent.click(submitElem);</span></span><br><span class="line"><span class="xml">        expect(usernameElem.value).toEqual(username);</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">        setTimeout( () =&gt; &#123;</span></span><br><span class="line"><span class="xml">            const storageData = simpleLocalStorage.getItem("currentUser");</span></span><br><span class="line"><span class="xml">            expect(storageData).not.toBeNull();</span></span><br><span class="line"><span class="xml">        &#125;)</span></span><br><span class="line"><span class="xml">    &#125;)</span></span><br><span class="line"><span class="xml">&#125;)</span></span><br></pre></td></tr></table></figure>
     </div>
 </article>
+
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -349,19 +383,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/01/js-variables/">Javasript Variables</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2019/08/06/react typescript jest config (一)/">react typescript jest config (一)</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/10/react hooks testing/">testing reack hooks</a>
+                    <a href="/2019/08/14/login test use jest testing-library-react/">jest mock axios complex implement</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/react typescript jest config (二)/">react typescript jest config (二)</a>
                 </span>
             </li>
             
@@ -379,13 +413,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/01/es6-新特性/">es6 新特性</a>
+                    <a href="/2019/08/11/testing library: jest-dom config issue/">testing-library/jest-dom config issue</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/04/jest test todo list/">jest test todo list</a>
+                    <a href="/2019/08/01/es6-新特性/">es6 新特性</a>
                 </span>
             </li>
             
@@ -400,17 +434,17 @@
 
                 
                 <li>
-                    <a href="/categories/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2019/08/14/login test use jest testing-library-react/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/categories/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2019/08/14/login test use jest testing-library-react/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/categories/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2019/08/14/login test use jest testing-library-react/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -418,23 +452,23 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/jest/" style="font-size: 18.26913787777479px;" class="tag-cloud-link">jest</a>
+    <a href="/tags/jest/" style="font-size: 8.314201306773501px;" class="tag-cloud-link">jest</a>
     
-    <a href="/tags/typescript/" style="font-size: 8.430411783604951px;" class="tag-cloud-link">typescript</a>
+    <a href="/tags/typescript/" style="font-size: 13.028263876696105px;" class="tag-cloud-link">typescript</a>
     
-    <a href="/tags/axios/" style="font-size: 18.07900963377078px;" class="tag-cloud-link">axios</a>
+    <a href="/tags/axios/" style="font-size: 12.202141543023663px;" class="tag-cloud-link">axios</a>
     
-    <a href="/tags/javascript/" style="font-size: 16.923481732538747px;" class="tag-cloud-link">javascript</a>
+    <a href="/tags/javascript/" style="font-size: 18.722229907084465px;" class="tag-cloud-link">javascript</a>
     
-    <a href="/tags/react/" style="font-size: 18.46756566986572px;" class="tag-cloud-link">react</a>
+    <a href="/tags/react/" style="font-size: 17.358480608325603px;" class="tag-cloud-link">react</a>
     
-    <a href="/tags/enzyme/" style="font-size: 17.81356702238763px;" class="tag-cloud-link">enzyme</a>
+    <a href="/tags/enzyme/" style="font-size: 19.098321490990436px;" class="tag-cloud-link">enzyme</a>
     
-    <a href="/tags/testing-library-react/" style="font-size: 17.53406168557742px;" class="tag-cloud-link">testing-library-react</a>
+    <a href="/tags/testing-library-react/" style="font-size: 10.226139104081934px;" class="tag-cloud-link">testing-library-react</a>
     
-    <a href="/tags/react-hooks/" style="font-size: 12.148889005483447px;" class="tag-cloud-link">react hooks</a>
+    <a href="/tags/react-hooks/" style="font-size: 18.20173617257678px;" class="tag-cloud-link">react hooks</a>
     
-    <a href="/tags/webpack/" style="font-size: 12.802123086682586px;" class="tag-cloud-link">webpack</a>
+    <a href="/tags/webpack/" style="font-size: 9.929599033232765px;" class="tag-cloud-link">webpack</a>
     
 </div>
                 
