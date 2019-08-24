@@ -126,15 +126,15 @@
                         
                         
                         <li>
+                            <a href="/tags/javascript/">javascript</a>
+                        </li>
+                        
+                        <li>
                             <a href="/tags/jest/">jest</a>
                         </li>
                         
                         <li>
                             <a href="/tags/typescript/">typescript</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/axios/">axios</a>
                         </li>
                         
                         
@@ -227,7 +227,7 @@
 <li>用户点击登录，调用验证码是否正确接口，返回imageVerification为true时，说明验证码填写正确。</li>
 <li>然后请求获取token接口，返回用户信息和其他相关信息，将返回信息存入localstorage.</li>
 </ul>
-<h2 id="2-集成测试"><a href="#2-集成测试" class="headerlink" title="2. 集成测试"></a>2. 集成测试</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;simpleLocalStorage&#125; <span class="keyword">from</span> <span class="string">"simple-storage"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;act, fireEvent&#125; <span class="keyword">from</span> <span class="string">"@testing-library/react"</span>;</span><br><span class="line">it(<span class="string">"currentUser should be in the localStorage when login success"</span>, () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> container = RenderWithRouter(<span class="xml"><span class="tag">&lt;<span class="name">Login</span> /&gt;</span>);</span></span><br><span class="line"><span class="xml">    // some same code ignore</span></span><br><span class="line"><span class="xml">    const usernameElem: HTMLInputElemnt = container.querySelector("#username");</span></span><br><span class="line"><span class="xml">    const passwordElem = getByPlaceholderText(/password/i) as HTMLInputElemnt;</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">    await act(async () =&gt; &#123;</span></span><br><span class="line"><span class="xml">        fireEvent.change(usernameElem,&#123;target: &#123;value: username&#125;&#125;);</span></span><br><span class="line"><span class="xml">    &#125;)</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">    process.nextTick(() =&gt; &#123;</span></span><br><span class="line"><span class="xml">        fireEvent.click(submitElem);</span></span><br><span class="line"><span class="xml">        expect(usernameElem.value).toEqual(username);</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">        setTimeout( () =&gt; &#123;</span></span><br><span class="line"><span class="xml">            const storageData = simpleLocalStorage.getItem("currentUser");</span></span><br><span class="line"><span class="xml">            expect(storageData).not.toBeNull();</span></span><br><span class="line"><span class="xml">        &#125;)</span></span><br><span class="line"><span class="xml">    &#125;)</span></span><br><span class="line"><span class="xml">&#125;)</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-集成测试"><a href="#2-集成测试" class="headerlink" title="2. 集成测试"></a>2. 集成测试</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;simpleLocalStorage&#125; <span class="keyword">from</span> <span class="string">"simple-storage"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;act, fireEvent&#125; <span class="keyword">from</span> <span class="string">"@testing-library/react"</span>;</span><br><span class="line">it(<span class="string">"currentUser should be in the localStorage when login success"</span>, () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> container = RenderWithRouter(&lt;Login /&gt;);</span><br><span class="line">    // some same code ignore</span><br><span class="line">    const usernameElem: HTMLInputElemnt = container.querySelector("#username");</span><br><span class="line">    const passwordElem = getByPlaceholderText(/password/i) as HTMLInputElemnt;</span><br><span class="line"></span><br><span class="line">    await act(async () =&gt; &#123;</span><br><span class="line">        fireEvent.change(usernameElem,&#123;target: &#123;value: username&#125;&#125;);</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    process.nextTick(() =&gt; &#123;</span><br><span class="line">        fireEvent.click(submitElem);</span><br><span class="line">        expect(usernameElem.value).toEqual(username);</span><br><span class="line"></span><br><span class="line">        setTimeout( () =&gt; &#123;</span><br><span class="line">            const storageData = simpleLocalStorage.getItem("currentUser");</span><br><span class="line">            expect(storageData).not.toBeNull();</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
     </div>
 </article>
 
@@ -289,6 +289,12 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2019/08/23/clone/">clone &amp;&amp; deepClone</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2019/08/14/login test use jest testing-library-react/">jest mock axios complex implement</a>
                 </span>
             </li>
@@ -341,12 +347,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/08/06/react typescript jest config (一)/">react typescript jest config (一)</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -365,7 +365,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/03/Jest Setup and Teardown/">Jest Setup and Teardown</a>
+                    <a href="/2019/08/23/clone/">clone &amp;&amp; deepClone</a>
                 </span>
             </li>
             
@@ -377,13 +377,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/14/jest mock axios complex implement/">jest mock axios complex implement</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/08/06/react typescript jest config (一)/">react typescript jest config (一)</a>
+                    <a href="/2019/08/02/jest-异步代码测试方法/">jest-异步代码测试方法</a>
                 </span>
             </li>
             
@@ -401,13 +395,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/10/webpack common config/">webpack 4.x common config</a>
+                    <a href="/2019/08/01/js-variables/">Javasript Variables</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/13/testing-library: react define renderer/">testing-library/react define renderer like renderwithRouter, renderWithRedux</a>
+                    <a href="/2019/08/10/react hooks testing/">testing reack hooks</a>
                 </span>
             </li>
             
@@ -419,7 +413,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/08/01/es6-新特性/">es6 新特性</a>
+                    <a href="/2019/08/13/testing-library: react define renderer/">testing-library/react define renderer like renderwithRouter, renderWithRedux</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/04/jest test todo list/">jest test todo list</a>
                 </span>
             </li>
             
@@ -452,23 +452,23 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/jest/" style="font-size: 8.314201306773501px;" class="tag-cloud-link">jest</a>
+    <a href="/tags/javascript/" style="font-size: 15.322521390125507px;" class="tag-cloud-link">javascript</a>
     
-    <a href="/tags/typescript/" style="font-size: 13.028263876696105px;" class="tag-cloud-link">typescript</a>
+    <a href="/tags/jest/" style="font-size: 13.50874426418185px;" class="tag-cloud-link">jest</a>
     
-    <a href="/tags/axios/" style="font-size: 12.202141543023663px;" class="tag-cloud-link">axios</a>
+    <a href="/tags/typescript/" style="font-size: 12.539575793224042px;" class="tag-cloud-link">typescript</a>
     
-    <a href="/tags/javascript/" style="font-size: 18.722229907084465px;" class="tag-cloud-link">javascript</a>
+    <a href="/tags/axios/" style="font-size: 13.401504742920078px;" class="tag-cloud-link">axios</a>
     
-    <a href="/tags/react/" style="font-size: 17.358480608325603px;" class="tag-cloud-link">react</a>
+    <a href="/tags/testing-library-react/" style="font-size: 18.93773483566884px;" class="tag-cloud-link">testing-library-react</a>
     
-    <a href="/tags/enzyme/" style="font-size: 19.098321490990436px;" class="tag-cloud-link">enzyme</a>
+    <a href="/tags/react/" style="font-size: 16.709863352667913px;" class="tag-cloud-link">react</a>
     
-    <a href="/tags/testing-library-react/" style="font-size: 10.226139104081934px;" class="tag-cloud-link">testing-library-react</a>
+    <a href="/tags/enzyme/" style="font-size: 18.29088504961645px;" class="tag-cloud-link">enzyme</a>
     
-    <a href="/tags/react-hooks/" style="font-size: 18.20173617257678px;" class="tag-cloud-link">react hooks</a>
+    <a href="/tags/react-hooks/" style="font-size: 9.887597058373238px;" class="tag-cloud-link">react hooks</a>
     
-    <a href="/tags/webpack/" style="font-size: 9.929599033232765px;" class="tag-cloud-link">webpack</a>
+    <a href="/tags/webpack/" style="font-size: 10.16564898688424px;" class="tag-cloud-link">webpack</a>
     
 </div>
                 

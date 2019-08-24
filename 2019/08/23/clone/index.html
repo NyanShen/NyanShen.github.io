@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Nyan Shen">
+    
+    <meta name="description" content="hard work will payoff">
+    
+    
+    
+    
+    
+    
+    <title>clone &amp;&amp; deepClone | sym blog</title>
+    <link href="”https://nyanshen.github.io“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/https:/avatars3.githubusercontent.com/u/25915814?s=400&u=ba4588d90273b5665763d5272218d066548f3121&v=4'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target=".bs-navbar-collapse"
+                    aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://nyanshen.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">sym blog</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>home
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>archive
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/categories">
+                        <i class="fa fa-list"></i>categories
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>tags
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/javascript/">javascript</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/jest/">jest</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/typescript/">typescript</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/tags">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/about">
+                        <i class="fa fa-user"></i>about me
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://nyanshen.github.io">sym blog</a>
+        >
+        <span>clone &amp;&amp; deepClone</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2019/08/23/clone/">clone &amp;&amp; deepClone</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/javascript/">javascript</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2019-08-23
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2019/08/23/clone/">clone &amp;&amp; deepClone</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2019-08-23
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/javascript/">javascript</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h2 id="1-shallow-clone"><a href="#1-shallow-clone" class="headerlink" title="1. shallow clone"></a>1. shallow clone</h2><blockquote>
+<p>JavaScript原始类型: Undefined、Null、Boolean、Number、String、Symbol(栈内存)<br>JavaScript引用类型:Object (堆内存)</p>
+</blockquote>
+<p>浅克隆之所以被称为浅克隆，是因为对象只会被克隆最外部的一层,至于更深层的对象,则依然是通过引用指向同一块堆内存.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// shallow_clone.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> shallowClone = <span class="function">(<span class="params">object: any</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> newObject = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> object) &#123;</span><br><span class="line">        <span class="keyword">if</span> (object.hasOwnProperty(key)) &#123;</span><br><span class="line">            newObject[key] = object[key];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newObject;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// shallow_clone.test.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; shallowClone &#125; <span class="keyword">from</span> <span class="string">"../../util/clone"</span>;</span><br><span class="line"></span><br><span class="line">it(<span class="string">"new object in deep object should be the same"</span>, () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> mockData = &#123;</span><br><span class="line">        a: <span class="number">1</span>,</span><br><span class="line">        b: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">        c: &#123; <span class="attr">d</span>: <span class="number">4</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> newObject: any = shallowClone(mockData);</span><br><span class="line">    expect(newObject).toEqual(mockData);</span><br><span class="line">    expect(newObject).not.toBe(mockData);</span><br><span class="line">    expect(newObject.c.d).toBe(mockData.c.d); <span class="comment">// 更深层的对象,则依然是通过引用指向同一块堆内存</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-JSON-parse-method"><a href="#2-JSON-parse-method" class="headerlink" title="2. JSON.parse method"></a>2. JSON.parse method</h2><p>便捷实现深克隆的方法, JSON对象parse方法可以将JSON字符串反序列化成JS对象，stringify方法可以将JS对象序列化成JSON字符串,这两个方法结合起来就能产生一个便捷的深克隆.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> jsonClone = <span class="function">(<span class="params">object: any</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(object));</span><br><span class="line">&#125;</span><br><span class="line">it(<span class="string">"new object in deep object should not be the same"</span>, () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> mockData = &#123;</span><br><span class="line">        a: <span class="number">1</span>,</span><br><span class="line">        b: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">        c: &#123; <span class="attr">d</span>: &#123; <span class="attr">e</span>: <span class="number">4</span> &#125; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> newObject: any = jsonClone(mockData);</span><br><span class="line">    expect(newObject.c.d).not.toBe(mockData.c.d);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这个方法的缺点：</p>
+<ul>
+<li>他无法实现对函数 、RegExp等特殊对象的克隆</li>
+<li>会抛弃对象的constructor,所有的构造函数会指向Object</li>
+<li>对象有循环引用,会报错</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">it(<span class="string">"clone complex object like RegExp"</span>, () =&gt; &#123;</span><br><span class="line">    <span class="comment">// constructor</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> personInstance = <span class="keyword">new</span> person(<span class="string">"test"</span>);</span><br><span class="line">    <span class="keyword">const</span> mockData = &#123;</span><br><span class="line">        a: <span class="regexp">/^[1-9]/i</span>,</span><br><span class="line">        b: <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"^[a-z]"</span>, <span class="string">"g"</span>),</span><br><span class="line">        c: [<span class="number">1</span>],</span><br><span class="line">        d: <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>), <span class="comment">// 稀疏数组,</span></span><br><span class="line">        e: personInstance,</span><br><span class="line">        f: person</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> newObject = jsonClone(mockData);</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * old object</span></span><br><span class="line"><span class="comment">     &#123; a: /^[1-9]/i,</span></span><br><span class="line"><span class="comment">      b: /^[a-z]/g,</span></span><br><span class="line"><span class="comment">      c: [ 1 ],</span></span><br><span class="line"><span class="comment">      d: [ &lt;1 empty item&gt; ],</span></span><br><span class="line"><span class="comment">      e: person &#123; name: 'test' &#125;,</span></span><br><span class="line"><span class="comment">      f: [Function: person] &#125;</span></span><br><span class="line"><span class="comment">      * new object</span></span><br><span class="line"><span class="comment">      &#123; a: &#123;&#125;</span></span><br><span class="line"><span class="comment">      b: &#123;&#125;, // RegExp</span></span><br><span class="line"><span class="comment">      c: [ 1 ],</span></span><br><span class="line"><span class="comment">      d: [ null ], // Array</span></span><br><span class="line"><span class="comment">      e: &#123; name: 'test' &#125;, // constructor</span></span><br><span class="line"><span class="comment">      f: undefind &#125; // function</span></span><br><span class="line"><span class="comment">      &#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    expect(newObject.a).toEqual(&#123;&#125;);</span><br><span class="line">    expect(newObject.b).toEqual(&#123;&#125;);</span><br><span class="line">    expect(newObject.c[<span class="number">0</span>]).toBe(<span class="number">1</span>);</span><br><span class="line">    expect(newObject.d[<span class="number">0</span>]).toBe(<span class="literal">null</span>);</span><br><span class="line">    expect(mockData.d[<span class="number">0</span>]).toBe(<span class="literal">undefined</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>对象的循环引用会抛出错误</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> oldObject = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">oldObject.a = oldObject;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newObject = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(oldObject));</span><br><span class="line"><span class="built_in">console</span>.log(newObject.a, oldObject.a); <span class="comment">// TypeError: Converting circular structure to JSON</span></span><br></pre></td></tr></table></figure>
+
+<p>与JSON.parse clone效果差不多的clonedeep方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> cloneDeep = <span class="function">(<span class="params">object: any</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> object !== <span class="string">"object"</span>) <span class="keyword">return</span> object;</span><br><span class="line">    <span class="keyword">const</span> newObject = object <span class="keyword">instanceof</span> <span class="built_in">Array</span> ? [] : &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> object) &#123;</span><br><span class="line">        <span class="keyword">if</span> (object.hasOwnProperty(key)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> object[key] === <span class="string">"object"</span> &amp;&amp; object[key] !== <span class="literal">null</span>) &#123;</span><br><span class="line">                newObject[key] = cloneDeep(object[key]);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                newObject[key] = object[key];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newObject</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-deep-clone"><a href="#3-deep-clone" class="headerlink" title="3. deep clone"></a>3. deep clone</h2><p>由于要面对不同的对象(正则、数组、Date等)要采用不同的处理方式，我们需要实现一个对象类型判断函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 对特殊对象进行类型判断</span></span><br><span class="line"><span class="keyword">const</span> isType = (object, type): <span class="function"><span class="params">boolean</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> object !== <span class="string">"object"</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">const</span> typeString = <span class="built_in">Object</span>.prototype.toString.call(object);</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"Array"</span>:</span><br><span class="line">            <span class="keyword">return</span> typeString === <span class="string">"[object Array]"</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"Date"</span>:</span><br><span class="line">            <span class="keyword">return</span> typeString === <span class="string">"[object Date]"</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"RegExp"</span>:</span><br><span class="line">            <span class="keyword">return</span> typeString === <span class="string">"[object RegExp]"</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实现一个提取flags的函数</span></span><br><span class="line"><span class="keyword">const</span> getRegExpFlags = <span class="function">(<span class="params">regExp: <span class="built_in">RegExp</span></span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> flags = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">if</span> (regExp.global) flags += <span class="string">"g"</span>;</span><br><span class="line">    <span class="keyword">if</span> (regExp.ignoreCase) flags += <span class="string">"i"</span>;</span><br><span class="line">    <span class="keyword">if</span> (regExp.multiline) flags += <span class="string">"m"</span>;</span><br><span class="line">    <span class="keyword">return</span> flags;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Buffer对象、Promise、Set、Map暂未处理</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> deepClone = <span class="function"><span class="params">oldObject</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 维护两个储存循环引用的数组</span></span><br><span class="line">    <span class="keyword">const</span> oldObjects = [];</span><br><span class="line">    <span class="keyword">const</span> newObjects = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> _deepClone = <span class="function"><span class="params">oldObject</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 递归直到oldobject为null时，或类型不为“object”时停止。</span></span><br><span class="line">        <span class="keyword">if</span> (oldObject === <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> oldObject !== <span class="string">'object'</span>) <span class="keyword">return</span> oldObject;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> newObject, newProtoType;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (isType(oldObject, <span class="string">'Array'</span>)) &#123;</span><br><span class="line">            <span class="comment">// 对数组做特殊处理</span></span><br><span class="line">            newObject = [];</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isType(oldObject, <span class="string">'RegExp'</span>)) &#123;</span><br><span class="line">            <span class="comment">// 对正则对象做特殊处理</span></span><br><span class="line">            newObject = <span class="keyword">new</span> <span class="built_in">RegExp</span>(oldObject.source, getRegExpFlags(oldObject));</span><br><span class="line">            <span class="keyword">if</span> (oldObject.lastIndex) newObject.lastIndex = oldObject.lastIndex;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isType(oldObject, <span class="string">'Date'</span>)) &#123;</span><br><span class="line">            <span class="comment">// 对Date对象做特殊处理</span></span><br><span class="line">            newObject = <span class="keyword">new</span> <span class="built_in">Date</span>(oldObject.getTime());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 处理对象原型</span></span><br><span class="line">            newProtoType = <span class="built_in">Object</span>.getPrototypeOf(oldObject);</span><br><span class="line">            <span class="comment">// 利用Object.create切断原型链</span></span><br><span class="line">            newObject = <span class="built_in">Object</span>.create(newProtoType);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 处理循环引用</span></span><br><span class="line">        <span class="keyword">const</span> index = oldObjects.indexOf(oldObject);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (index != <span class="number">-1</span>) &#123;</span><br><span class="line">            <span class="comment">// 如果父数组存在本对象,说明之前已经被引用过,直接返回此对象</span></span><br><span class="line">            <span class="keyword">return</span> newObjects[index];</span><br><span class="line">        &#125;</span><br><span class="line">        oldObjects.push(oldObject);</span><br><span class="line">        newObjects.push(newObject);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> oldObject) &#123;</span><br><span class="line">            <span class="keyword">if</span> (oldObject.hasOwnProperty(key)) &#123;</span><br><span class="line">                <span class="comment">// newObject 已根据条件做了特殊处理</span></span><br><span class="line">                newObject[key] = _deepClone(oldObject[key]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> newObject;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> _deepClone(oldObject);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// test</span></span><br><span class="line">it(<span class="string">"test deep clone method"</span>, () =&gt; &#123;</span><br><span class="line">    <span class="comment">// constructor</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> personInstance = <span class="keyword">new</span> person(<span class="string">"test"</span>);</span><br><span class="line">    <span class="keyword">const</span> mockData = &#123;</span><br><span class="line">        a: <span class="literal">null</span>,</span><br><span class="line">        b: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">        c: &#123; <span class="attr">d</span>: &#123; <span class="attr">e</span>: <span class="number">4</span> &#125; &#125;,</span><br><span class="line">        f: <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"^[a-z]"</span>, <span class="string">"g"</span>),</span><br><span class="line">        h: <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>),</span><br><span class="line">        i: personInstance,</span><br><span class="line">        j: person,</span><br><span class="line">        l: <span class="string">"test"</span>,</span><br><span class="line">        m: <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">2</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> newObject: any = deepClone(mockData);</span><br><span class="line">    <span class="built_in">console</span>.log(newObject)</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * &#123; a: null,</span></span><br><span class="line"><span class="comment">        b: [ 1, 2, 3 ],</span></span><br><span class="line"><span class="comment">        c: &#123; d: &#123; e: 4 &#125; &#125;,</span></span><br><span class="line"><span class="comment">        f: /^[a-z]/g,</span></span><br><span class="line"><span class="comment">        h: [ 1, 4, 6 ],</span></span><br><span class="line"><span class="comment">        i: person &#123; name: 'test' &#125;,</span></span><br><span class="line"><span class="comment">        j: [Function: person],</span></span><br><span class="line"><span class="comment">        l: 'test',</span></span><br><span class="line"><span class="comment">        m: [] &#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>对于Buffer对象、Promise、Set、Map可能都需要我们做特殊处理，另外对于确保没有循环引用的对象，我们可以省去对循环引用的特殊处理，因为这很消耗时间，不过一个基本的深克隆函数我们已经实现了，在生产环境中最好用lodash的深克隆实现.</p>
+
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get"
+              action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            Nyan Shen
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="https://avatars3.githubusercontent.com/u/25915814?s=400&u=ba4588d90273b5665763d5272218d066548f3121&v=4" width="140" height="140"
+                 alt="个人头像" class="author-image">
+            <p class="author-description"><p>hard work will payoff</p>
+</p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/23/clone/">clone &amp;&amp; deepClone</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/14/login test use jest testing-library-react/">jest mock axios complex implement</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/14/jest mock axios complex implement/">jest mock axios complex implement</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/13/testing-library: react define renderer/">testing-library/react define renderer like renderwithRouter, renderWithRedux</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/11/testing library: jest-dom config issue/">testing-library/jest-dom config issue</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/10/webpack common config/">webpack 4.x common config</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/10/react hooks testing/">testing reack hooks</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/09/unit test for react/">jest enzyme unit test react</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/08/jest config issue/">jest config issue assets &amp;&amp; alias</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/07/react typescript jest config (二)/">react typescript jest config (二)</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/03/Jest Setup and Teardown/">Jest Setup and Teardown</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/14/login test use jest testing-library-react/">jest mock axios complex implement</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/01/js-variables/">Javasript Variables</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/06/react typescript jest config (一)/">react typescript jest config (一)</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/11/testing library: jest-dom config issue/">testing-library/jest-dom config issue</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/10/webpack common config/">webpack 4.x common config</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/01/es6-新特性/">es6 新特性</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/09/unit test for react/">jest enzyme unit test react</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/13/testing-library: react define renderer/">testing-library/react define renderer like renderwithRouter, renderWithRedux</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/04/jest test todo list/">jest test todo list</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2019/08/23/clone/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/08/23/clone/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/08/23/clone/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/javascript/" style="font-size: 15.733645123747475px;" class="tag-cloud-link">javascript</a>
+    
+    <a href="/tags/jest/" style="font-size: 12.5749226193596px;" class="tag-cloud-link">jest</a>
+    
+    <a href="/tags/typescript/" style="font-size: 11.285130173006849px;" class="tag-cloud-link">typescript</a>
+    
+    <a href="/tags/axios/" style="font-size: 10.383027804892999px;" class="tag-cloud-link">axios</a>
+    
+    <a href="/tags/testing-library-react/" style="font-size: 12.817086408654195px;" class="tag-cloud-link">testing-library-react</a>
+    
+    <a href="/tags/react/" style="font-size: 18.152599107113286px;" class="tag-cloud-link">react</a>
+    
+    <a href="/tags/enzyme/" style="font-size: 8.4688152317427px;" class="tag-cloud-link">enzyme</a>
+    
+    <a href="/tags/react-hooks/" style="font-size: 18.643818346523346px;" class="tag-cloud-link">react hooks</a>
+    
+    <a href="/tags/webpack/" style="font-size: 19.053004514907194px;" class="tag-cloud-link">webpack</a>
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="https://regexper.com" target="_blank">regexper</a>
+    </li>
+    
+    <li>
+        <a href="https://caniuse.com" target="_blank">css</a>
+    </li>
+    
+    <li>
+        <a href="https://www.linkedin.com/feed/" target="_blank">linkedin</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/NyanShen/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://juejin.im/timeline" target="_blank">掘金</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com/people/nyanshen/activities" target="_blank">知乎</a>
+    </li>
+    
+    <li>
+        <a href="https://www.cnblogs.com/Nyan-Workflow-FC/" target="_blank">博客园</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 Nyan Shen Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+
+</html>
