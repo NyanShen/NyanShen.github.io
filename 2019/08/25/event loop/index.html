@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Nyan Shen">
+    
+    <meta name="description" content="hard work will payoff">
+    
+    
+    
+    
+    
+    
+    <title>javascript Event Loop | sym blog</title>
+    <link href="”https://nyanshen.github.io“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/https:/avatars3.githubusercontent.com/u/25915814?s=400&u=ba4588d90273b5665763d5272218d066548f3121&v=4'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target=".bs-navbar-collapse"
+                    aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://nyanshen.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">sym blog</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>home
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>archive
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/categories">
+                        <i class="fa fa-list"></i>categories
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>tags
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/javascript/">javascript</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/jest/">jest</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/axios/">axios</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/tags">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/about">
+                        <i class="fa fa-user"></i>about me
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://nyanshen.github.io">sym blog</a>
+        >
+        <span>javascript Event Loop</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2019/08/25/event loop/">javascript Event Loop</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/javascript/">javascript</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2019-08-25
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2019/08/25/event loop/">javascript Event Loop</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2019-08-25
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/javascript/">javascript</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h2 id="1-堆，栈，队列"><a href="#1-堆，栈，队列" class="headerlink" title="1. 堆，栈，队列"></a>1. 堆，栈，队列</h2><h4 id="堆（Heap）"><a href="#堆（Heap）" class="headerlink" title="堆（Heap）"></a>堆（Heap）</h4><p>堆是一种数据结构，是利用完全二叉树维护的一组数据，堆分为两种，一种为最大堆，一种为最小堆，将根节点最大的堆叫做最大堆或大根堆，根节点最小的堆叫做最小堆或小根堆。<br>堆是线性数据结构，相当于一维数组，有唯一后继。</p>
+<h4 id="栈（Stack）"><a href="#栈（Stack）" class="headerlink" title="栈（Stack）"></a>栈（Stack）</h4><p>栈在计算机科学中是限定仅在表尾进行插入或删除操作的线性表。 栈是一种数据结构，它按照后进先出的原则存储数据，先进入的数据被压入栈底，最后的数据在栈顶，需要读数据的时候从栈顶开始弹出数据。<br>栈是只能在某一端插入和删除的特殊线性表。</p>
+<h4 id="队列（Queue）"><a href="#队列（Queue）" class="headerlink" title="队列（Queue）"></a>队列（Queue）</h4><p>特殊之处在于它只允许在表的前端（front）进行删除操作，而在表的后端（rear）进行插入操作，和栈一样，队列是一种操作受限制的线性表。<br>进行插入操作的端称为队尾，进行删除操作的端称为队头。  队列中没有元素时，称为空队列。<br>队列的数据元素又称为队列元素。在队列中插入一个队列元素称为入队，从队列中删除一个队列元素称为出队。因为队列只允许在一端插入，在另一端删除，所以只有最早进入队列的元素才能最先从队列中删除，故队列又称为先进先出（FIFO—first in first out）</p>
+<h2 id="2-Event-loop"><a href="#2-Event-loop" class="headerlink" title="2. Event loop"></a>2. Event loop</h2><p>在JavaScript中，任务被分为两种，一种宏任务（MacroTask）也叫Task，一种叫微任务（MicroTask）。</p>
+<ul>
+<li><p>MacroTask（宏任务）<br>script全部代码、setTimeout、setInterval、setImmediate（浏览器暂时不支持，只有IE10支持，具体可见MDN）、I/O、UI Rendering。</p>
+</li>
+<li><p>MicroTask（微任务）<br>Process.nextTick（Node独有）、Promise、Object.observe(废弃)、MutationObserver</p>
+</li>
+</ul>
+<h2 id="3-浏览器中的Event-Loop"><a href="#3-浏览器中的Event-Loop" class="headerlink" title="3. 浏览器中的Event Loop"></a>3. 浏览器中的Event Loop</h2><p><code>Javascript</code> 有一个 <code>main thread</code> 主线程和 <code>call-stack</code> 调用栈(执行栈)，所有的任务都会被放到调用栈等待主线程执行。</p>
+<h4 id="JS调用栈"><a href="#JS调用栈" class="headerlink" title="JS调用栈"></a>JS调用栈</h4><p>JS调用栈采用的是后进先出的规则，当函数执行的时候，会被添加到栈的顶部，当执行栈执行完成后，就会从栈顶移出，直到栈内被清空。</p>
+<h4 id="同步任务和异步任务"><a href="#同步任务和异步任务" class="headerlink" title="同步任务和异步任务"></a>同步任务和异步任务</h4><p><code>Javascript</code>单线程任务被分为<strong>同步任务</strong>和<strong>异步任务</strong>，同步任务会在调用栈中按照顺序等待主线程依次执行，异步任务会在异步任务有了结果后，将注册的回调函数放入任务队列中等待主线程空闲的时候（调用栈被清空），被读取到栈内等待主线程的执行。</p>
+<h4 id="事件循环的进程模型"><a href="#事件循环的进程模型" class="headerlink" title="事件循环的进程模型"></a>事件循环的进程模型</h4><ul>
+<li>择当前要执行的任务队列，选择任务队列中最先进入的任务，如果任务队列为空即null，则执行跳转到微任务（MicroTask）的执行步骤。</li>
+<li>将事件循环中的任务设置为已选择任务。</li>
+<li>执行任务。</li>
+<li>将事件循环中当前运行任务设置为null。</li>
+<li>将已经运行完成的任务从任务队列中删除。</li>
+<li>microtasks步骤：进入microtask检查点。</li>
+<li>更新界面渲染。</li>
+<li>返回第一步。</li>
+</ul>
+<h4 id="执行进入microtask检查点时，用户代理会执行以下步骤："><a href="#执行进入microtask检查点时，用户代理会执行以下步骤：" class="headerlink" title="执行进入microtask检查点时，用户代理会执行以下步骤："></a>执行进入microtask检查点时，用户代理会执行以下步骤：</h4><ul>
+<li>设置microtask检查点标志为true。</li>
+<li>当事件循环microtask执行不为空时：选择一个最先进入的microtask队列的microtask，将事件循环的microtask设置为已选择的microtask，运行microtask，将已经执行完成的microtask为null，移出microtask中的microtask。</li>
+<li>清理IndexDB事务</li>
+<li>设置进入microtask检查点的标志为false。</li>
+</ul>
+<p>执行栈在执行完同步任务后，查看执行栈是否为空，如果执行栈为空，就会去检查微任务(microTask)队列是否为空，如果为空的话，就执行Task（宏任务），否则就一次性执行完所有微任务。<br>每次单个宏任务执行完毕后，检查微任务(microTask)队列是否为空，如果不为空的话，会按照先入先出的规则全部执行完微任务(microTask)后，设置微任务(microTask)队列为null，然后再执行宏任务，如此循环。</p>
+<h2 id="4-setTimeout-Promise"><a href="#4-setTimeout-Promise" class="headerlink" title="4. setTimeout Promise"></a>4. setTimeout Promise</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>);</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'start setTimeout'</span>);</span><br><span class="line">  <span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promise4'</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'end setTimeout'</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>);</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise2'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'script end'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>第一次执行：<br>执行同步代码，将宏任务（<code>Tasks</code>）和微任务(<code>Microtasks</code>)划分到各自队列中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Tasks：run script、 setTimeout callback</span><br><span class="line"></span><br><span class="line">Microtasks：<span class="built_in">Promise</span> then	</span><br><span class="line"></span><br><span class="line">JS stack: script	</span><br><span class="line">Log: script start、script end。</span><br></pre></td></tr></table></figure>
+
+<p>第二次执行：<br>执行宏任务<code>run script</code>后，检测到微任务(<code>Microtasks</code>)队列中不为空，执行<code>Promise1</code>，执行完成<code>Promise1</code>后，调用<code>Promise2.then</code>，放入微任务(<code>Microtasks</code>)队列中，再执行<code>Promise2.then</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Tasks：run script、 setTimeout callback</span><br><span class="line"></span><br><span class="line">Microtasks：<span class="built_in">Promise</span> then <span class="built_in">Promise</span> then	</span><br><span class="line"></span><br><span class="line">JS stack: Promise1 callback	</span><br><span class="line">Log: script start、script end、promise1、promise2</span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line">Tasks：run script、 setTimeout callback</span><br><span class="line"></span><br><span class="line">Microtasks：<span class="built_in">Promise</span> then 	</span><br><span class="line"></span><br><span class="line">JS stack: Promise2 callback	</span><br><span class="line">Log: script start、script end、promise1、promise2</span><br></pre></td></tr></table></figure>
+
+<p>第三次执行：<br>当微任务(<code>Microtasks</code>)队列中为空时，执行宏任务（<code>Tasks</code>），<br>执行<code>setTimeout</code>同步代码，将宏任务（<code>setTimeout</code>）的微任务(<code>Microtasks</code>)划分到各自队列中。。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Tasks：setTimeout callback</span><br><span class="line"></span><br><span class="line">Microtasks： <span class="built_in">Promise</span> then</span><br><span class="line"></span><br><span class="line">JS stack: setTimeout callback</span><br><span class="line">Log: script start、script end、promise1、promise2、start setTimeout、 end setTimeout</span><br></pre></td></tr></table></figure>
+
+<p>第四次执行：<br>执行宏任务<code>setTimeout</code>后，检测到微任务(Microtasks)队列中不为空，执行Promise3</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Tasks：setTimeout callback</span><br><span class="line"></span><br><span class="line">Microtasks： <span class="built_in">Promise</span> then</span><br><span class="line"></span><br><span class="line">JS stack: promise3 callback</span><br><span class="line">Log: script start、script end、promise1、promise2、start setTimeout、 end setTimeout、 promise3</span><br></pre></td></tr></table></figure>
+
+<p>最后清空Tasks队列和JS stack。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Tasks：</span><br><span class="line"></span><br><span class="line">Microtasks： </span><br><span class="line"></span><br><span class="line">JS stack:</span><br><span class="line">Log: script start、script end、promise1、promise2、start setTimeout、 end setTimeout、 promise3</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-Async-await"><a href="#5-Async-await" class="headerlink" title="5. Async await"></a>5. Async await</h2><p><code>async/await</code> 在底层转换成了 <code>promise</code> 和 <code>then</code> 回调函数。<br>也就是说，这是 <code>promise</code> 的语法糖。<br>每次我们使用 <code>await</code>, 解释器都创建一个 <code>promise</code> 对象，然后把剩下的 <code>async</code> 函数中的操作放到 <code>then</code> 回调函数中。<br><code>async/await</code> 的实现，离不开 <code>Promise</code>。从字面意思来理解，async 是“异步”的简写，而 await 是 <code>async wait</code> 的简写可以认为是等待异步方法执行完成。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">await</span> async2()</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'async1 end'</span>) <span class="comment">// 5, async 的 then</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'async2 end'</span>) <span class="comment">// 2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async1()</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'setTimeout'</span>)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Promise'</span>) <span class="comment">// 3</span></span><br><span class="line">  resolve()</span><br><span class="line">&#125;)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promise1'</span>) <span class="comment">// 6</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promise2'</span>) <span class="comment">// 7</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'script end'</span>) <span class="comment">// 4</span></span><br><span class="line">task run script(include async1(), promise resolve), setTimeout</span><br><span class="line">microTask async1 then, <span class="built_in">Promise</span> then,</span><br></pre></td></tr></table></figure>
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get"
+              action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            Nyan Shen
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="https://avatars3.githubusercontent.com/u/25915814?s=400&u=ba4588d90273b5665763d5272218d066548f3121&v=4" width="140" height="140"
+                 alt="个人头像" class="author-image">
+            <p class="author-description"><p>hard work will payoff</p>
+</p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/25/event loop/">javascript Event Loop</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/23/clone/">clone &amp;&amp; deepClone</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/14/login test use jest testing-library-react/">jest mock axios complex implement</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/14/jest mock axios complex implement/">jest mock axios complex implement</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/13/testing-library: react define renderer/">testing-library/react define renderer like renderwithRouter, renderWithRedux</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/11/testing library: jest-dom config issue/">testing-library/jest-dom config issue</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/10/webpack common config/">webpack 4.x common config</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/10/react hooks testing/">testing reack hooks</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/09/unit test for react/">jest enzyme unit test react</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/08/jest config issue/">jest config issue assets &amp;&amp; alias</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/25/event loop/">javascript Event Loop</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/14/jest mock axios complex implement/">jest mock axios complex implement</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/08/jest config issue/">jest config issue assets &amp;&amp; alias</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/02/jest-异步代码测试方法/">jest-异步代码测试方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/01/js-variables/">Javasript Variables</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/14/login test use jest testing-library-react/">jest mock axios complex implement</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/11/testing library: jest-dom config issue/">testing-library/jest-dom config issue</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/10/webpack common config/">webpack 4.x common config</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/01/es6-新特性/">es6 新特性</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/08/04/jest test todo list/">jest test todo list</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2019/08/25/event loop/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/08/25/event loop/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2019/08/25/event loop/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/javascript/" style="font-size: 12.096819243727088px;" class="tag-cloud-link">javascript</a>
+    
+    <a href="/tags/jest/" style="font-size: 14.481414559996278px;" class="tag-cloud-link">jest</a>
+    
+    <a href="/tags/axios/" style="font-size: 18.975439574052146px;" class="tag-cloud-link">axios</a>
+    
+    <a href="/tags/typescript/" style="font-size: 9.314199107547267px;" class="tag-cloud-link">typescript</a>
+    
+    <a href="/tags/react/" style="font-size: 9.680453396437867px;" class="tag-cloud-link">react</a>
+    
+    <a href="/tags/enzyme/" style="font-size: 10.515943449131095px;" class="tag-cloud-link">enzyme</a>
+    
+    <a href="/tags/react-hooks/" style="font-size: 11.765162364721414px;" class="tag-cloud-link">react hooks</a>
+    
+    <a href="/tags/testing-library-react/" style="font-size: 10.960429523229504px;" class="tag-cloud-link">testing-library-react</a>
+    
+    <a href="/tags/webpack/" style="font-size: 16.502055750775813px;" class="tag-cloud-link">webpack</a>
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="https://regexper.com" target="_blank">regexper</a>
+    </li>
+    
+    <li>
+        <a href="https://caniuse.com" target="_blank">css</a>
+    </li>
+    
+    <li>
+        <a href="https://www.linkedin.com/feed/" target="_blank">linkedin</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/NyanShen/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://juejin.im/timeline" target="_blank">掘金</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com/people/nyanshen/activities" target="_blank">知乎</a>
+    </li>
+    
+    <li>
+        <a href="https://www.cnblogs.com/Nyan-Workflow-FC/" target="_blank">博客园</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 Nyan Shen Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+
+</html>
